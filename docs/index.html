@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Soap Computer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root { color-scheme: dark; --bg: #07090E; --panel: #0E121B; --line: #1E2533; --text: #DCE2EC; --muted: #8A95AA; --faint: #5A6479; --amber: #FFB547; --teal: #4FD1C5; --na: #FFB22E; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.62 "IBM Plex Sans", system-ui, sans-serif; padding-inline: 16px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding-block: 28px 80px; }
+  h1 { font: 600 44px/1.1 "STIX Two Text", Georgia, serif; margin: 10px 0 8px; } h2 { font: 600 28px/1.2 "STIX Two Text", Georgia, serif; margin: 56px 0 10px; }
+  p { color: #C8D0DC; max-width: 760px; } .muted { color: var(--muted); } .lede { font-size: 18px; color: #D4DBE6; }
+  .stage { position: relative; background: #05070B; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  canvas { display: block; width: 100%; touch-action: none; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 4px; }
+  button { font: 500 14px "IBM Plex Sans", sans-serif; color: var(--text); background: #141A26; border: 1px solid #2C3649; border-radius: 6px; padding: 7px 13px; cursor: pointer; }
+  button:hover { border-color: var(--faint); } button[aria-pressed="true"] { border-color: var(--teal); color: #E9FFFC; background: #10302E; }
+  .read { font: 500 14px "IBM Plex Mono", monospace; color: var(--muted); } .read b { color: #F2F5F9; font-weight: 500; }
+  .overlay { position: absolute; left: 12px; top: 10px; font: 500 13px "IBM Plex Mono", monospace; color: #C9D2DF; pointer-events: none; text-shadow: 0 1px 2px #000; }
+  .lamp { position: sticky; top: 0; z-index: 5; display: flex; gap: 8px; align-items: center; justify-content: flex-end; padding: 8px 0; background: linear-gradient(var(--bg) 70%, transparent); }
+  .lamp .read { margin-right: 6px; }
+  .two { display: grid; grid-template-columns: 1.35fr 1fr; gap: 14px; } @media (max-width: 760px) { .two { grid-template-columns: 1fr; } h1 { font-size: 34px; } }
+  input[type=range] { width: 260px; accent-color: var(--teal); }
+  .note { font-size: 14px; color: var(--muted); max-width: 760px; }
+  .eq { font: italic 400 19px "STIX Two Text", serif; color: #F1F4F8; }
+  footer { margin-top: 60px; font-size: 13px; color: var(--faint); }
+</style></head>
+<body><div class="wrap">
+  <div class="lamp"><span class="read">light:</span><button id="lampDay" aria-pressed="true">daylight</button><button id="lampNa" aria-pressed="false">sodium lamp</button></div>
+  <h1>The Soap Computer</h1>
+  <p class="lede">A soap film pulls itself as small as it can. That one habit makes it solve geometry problems, instantly and beautifully, but only as well as a lazy genius would: it finds <i>a</i> good answer, not always <i>the</i> best one.</p>
+  <div class="stage"><canvas id="hero" style="height:440px"></canvas><div class="overlay" id="heroCap">a soap film in a wire cube · drag to turn</div></div>
+  <p class="note">Every colour here is computed, not painted. The film is a few hundred nanometres of water. Light bouncing off its front and back faces interferes, and each thickness keeps a different set of wavelengths. Switch the light to a sodium lamp, a single yellow wavelength, and the rainbow turns into stripes.</p>
+
+  <h2>A computer made of soap</h2>
+  <p>Put pins between two glass plates and dip them. The film clings to the pins and pulls its walls as short as possible, so it builds a road network joining the pins. It adds junctions of its own, always three walls at 120°. That is the <b>Steiner tree problem</b>, and for many pins it is famously hard for computers.</p>
+  <div class="stage"><canvas id="steiner" style="height:440px"></canvas><div class="overlay" id="stCap">click to add a pin · drag to move one</div></div>
+  <div class="bar">
+    <button id="stDip">Dip again</button><button id="stShake">Shake</button><button id="stBest">Best of 200 dips</button>
+    <span class="muted" style="margin-left:6px">pins:</span><button data-preset="square">square</button><button data-preset="hex">hexagon</button><button data-preset="rand7">7 random</button><button data-preset="rand10">10 random</button><button id="stClear">clear</button>
+    <button id="st120" aria-pressed="true">120° marks</button>
+  </div>
+  <div class="read" id="stRead"></div>
+  <p class="note">Dip a few times with 7 or 10 pins. The film often settles on a network that is <i>locally</i> shortest, where no small wiggle helps, but longer than the best one found by many dips. Sometimes it's even longer than just joining the pins directly.</p>
+
+  <h2>Only two ways to meet</h2>
+  <p>Dip a wire frame and the films meet along lines and at points. The Belgian physicist Joseph Plateau catalogued what he saw in the nineteenth century. Films only ever meet <b>three at a time, at 120°</b>, and those lines only ever meet <b>four at a time</b>, at about <b>109.5°</b>, the angle from the centre of a tetrahedron to its corners. In 1976 the mathematician Jean Taylor proved that these are the only possibilities.</p>
+  <div class="two">
+    <div class="stage"><canvas id="frames" style="height:420px"></canvas><div class="overlay" id="frCap"></div></div>
+    <div>
+      <div class="bar"><button data-frame="tetra" aria-pressed="true">tetrahedron</button><button data-frame="cube">cube</button><button id="frDip">dip again</button></div>
+      <div class="bar"><button id="frLines" aria-pressed="true">triple lines</button><button id="frDots" aria-pressed="true">junctions</button></div>
+      <p class="read" id="frRead"></p>
+      <p class="note">Nothing here is told to make 120° or 109.5°. The simulation only moves the film downhill in area. The wires hold their edges, and everything else is free. The angles appear by themselves, because three equal pulls only balance at 120°.</p>
+    </div>
+  </div>
+
+  <h2>A hanging chain, spun</h2>
+  <p>Stretch a film between two rings and it pinches into a waist: a <b>catenoid</b>. Its profile is the curve of a hanging chain, the <b>catenary</b>. Both are shapes that minimise: the chain its height, the film its area. Pull the rings apart and the waist narrows until, at a separation of about 1.33 ring radii, no catenoid exists. The film collapses into two flat disks.</p>
+  <div class="two">
+    <div class="stage"><canvas id="cat" style="height:420px"></canvas><div class="overlay" id="catCap"></div></div>
+    <div>
+      <div class="bar"><span class="read">separation h/R</span><input type="range" id="catH" min="0.2" max="1.4" step="0.005" value="0.9"><span class="read" id="catHv"></span></div>
+      <div class="bar"><button id="catPull">pull apart slowly</button><button id="catReset">reset</button></div>
+      <canvas id="catChart" style="height:230px; border:1px solid var(--line); border-radius:8px; background:#05070B"></canvas>
+      <p class="note">Between h/R = 1.055 and 1.325, the catenoid has <i>more</i> area than the two disks, yet the film stays: a local minimum it can't leave without first growing. Past 1.325 there is no catenoid at all, and it snaps.</p>
+    </div>
+  </div>
+
+  <h2>Colours, and a sodium lamp</h2>
+  <p>Hold a film upright and it drains. Water slides down, the top thins, and the colour bands creep downward. Where the film gets thinner than about a thirtieth of a wavelength, both reflections cancel and it turns black, just before it pops.</p>
+  <div class="two">
+    <div class="stage"><canvas id="drain" style="height:420px"></canvas><div class="overlay" id="drCap"></div></div>
+    <div>
+      <div class="bar"><button id="drRestart">new film</button><button id="drPause" aria-pressed="false">pause</button></div>
+      <p class="read" id="drRead"></p>
+      <p class="note">Under a sodium lamp there is only one wavelength, 589 nm. Each spot is simply bright or dark. Going from one dark stripe to the next, the film gets thicker by half a wavelength inside water, about <b>221 nm</b>. Count the stripes and you have measured the film.</p>
+    </div>
+  </div>
+  <footer>Episode 4 of the series after <a href="https://benknill.github.io/rhine-dimples" style="color:#6FA8FF">Dimples on the Rhine</a>. Simulations run in your browser: a 2D film network on gradient descent with topology changes; a 3D area minimiser on triangle meshes; an axisymmetric curvature flow for the catenoid; thin-film interference from the CIE colour-matching functions.</footer>
+</div>
+<script src="filmcolor.js"></script><script src="steiner.js"></script><script src="surface.js"></script><script src="catenoid.js"></script><script src="film3d.js"></script>
+<script>
+(() => {
+  const TAU = 2 * Math.PI, clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  let LIGHT = "day", LUT = FilmColor.filmLUT(512, 1600, "day"); const listeners = [];
+  const lutRGB = d => { const i = Math.round(clamp(d / LUT.dMax) * (LUT.n - 1)) * 4; return [LUT.data[i], LUT.data[i + 1], LUT.data[i + 2]]; };
+  const setLamp = l => { LIGHT = l; LUT = FilmColor.filmLUT(512, 1600, l); document.getElementById("lampDay").setAttribute("aria-pressed", String(l === "day")); document.getElementById("lampNa").setAttribute("aria-pressed", String(l === "sodium")); listeners.forEach(f => f(l)); };
+  document.getElementById("lampDay").onclick = () => setLamp("day"); document.getElementById("lampNa").onclick = () => setLamp("sodium");
+  const fit = cv => { const dpr = Math.min(2, window.devicePixelRatio || 1), w = Math.round(cv.clientWidth * dpr), h = Math.round(cv.clientHeight * dpr); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; } return dpr; };
+  const visible = el => { const r = el.getBoundingClientRect(); return r.bottom > -50 && r.top < innerHeight + 50; };
+
+  // ---------------------------------------------------------------- hero: a cube film, relaxed in the background
+  const hero = Film3D.Renderer(document.getElementById("hero"), { dist: 5.4, auto: 0.18, pitch: 0.42 });
+  listeners.push(l => hero.setLight(l));
+  const heroFilm = Surface.cube(10); let heroRelax = true;                                    // it settles while you watch
+  hero.setWires(heroFilm.wires.map(w => w), 0.035); hero.setLines(Film3D.tripleLines(heroFilm), 0.008); hero.setDots([]);
+
+  // ---------------------------------------------------------------- the soap computer
+  const stCv = document.getElementById("steiner"), st = stCv.getContext("2d"); let pins = [], net = null, best = null, drag = null, show120 = true, relaxing = 0;
+  const W2 = () => stCv.clientWidth, H2 = () => stCv.clientHeight, S2 = () => Math.min(W2(), H2()) / 2.4;          // world units: about 2.4 across the short side
+  const toW = (x, y) => ({ x: (x - W2() / 2) / S2(), y: (y - H2() / 2) / S2() }), toS = p => [W2() / 2 + p.x * S2(), H2() / 2 + p.y * S2()];
+  const rnd = (() => { let s = 12345; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); })();
+  const preset = k => { const n = k === "square" ? 4 : k === "hex" ? 6 : 0; pins = [];
+    if (n) for (let i = 0; i < n; i++) pins.push({ x: 0.85 * Math.cos(TAU * i / n + (n === 4 ? Math.PI / 4 : 0)), y: 0.85 * Math.sin(TAU * i / n + (n === 4 ? Math.PI / 4 : 0)) });
+    else { const m = k === "rand7" ? 7 : 10, asp = W2() / H2(); for (let i = 0; i < m; i++) pins.push({ x: (Math.random() - 0.5) * 2.1 * Math.min(asp, 1.8), y: (Math.random() - 0.5) * 2.0 }); }
+    best = null; dip(); };
+  const dip = () => { if (pins.length < 2) { net = null; return; } net = Steiner.Network(pins, Math.random).dip(); relaxing = 1; };
+  const doBest = () => { if (pins.length < 3) return; best = Steiner.bestOf(pins, 200); readSteiner(); };
+  document.querySelectorAll("[data-preset]").forEach(b => b.onclick = () => preset(b.dataset.preset));
+  document.getElementById("stDip").onclick = dip; document.getElementById("stShake").onclick = () => { if (net) { net.shake(0.35); relaxing = 1; } };
+  document.getElementById("stBest").onclick = doBest; document.getElementById("stClear").onclick = () => { pins = []; net = null; best = null; readSteiner(); };
+  document.getElementById("st120").onclick = e => { show120 = !show120; e.target.setAttribute("aria-pressed", String(show120)); };
+  stCv.addEventListener("pointerdown", e => { const r = stCv.getBoundingClientRect(), p = toW(e.clientX - r.left, e.clientY - r.top); const hit = pins.findIndex(q => Math.hypot(q.x - p.x, q.y - p.y) < 14 / S2());
+    if (hit >= 0) drag = hit; else { pins.push(p); drag = pins.length - 1; best = null; dip(); } stCv.setPointerCapture(e.pointerId); });
+  stCv.addEventListener("pointermove", e => { if (drag === null) return; const r = stCv.getBoundingClientRect(), p = toW(e.clientX - r.left, e.clientY - r.top); pins[drag].x = p.x; pins[drag].y = p.y; if (net) { net.pins[drag].x = p.x; net.pins[drag].y = p.y; relaxing = 1; } best = null; });
+  stCv.addEventListener("pointerup", () => { drag = null; });
+  const readSteiner = () => { const el = document.getElementById("stRead"); if (!net || pins.length < 2) { el.innerHTML = "add at least three pins"; return; }
+    const L = net.length(), M = Steiner.mst(pins); let s = `this film: <b>${L.toFixed(3)}</b> · joining the pins directly (shortest tree without junctions): <b>${M.toFixed(3)}</b>`;
+    if (best) s += ` · best of 200 dips: <b>${best.L.toFixed(3)}</b> ${L > best.L + 1e-6 ? `(this film is ${(100 * (L / best.L - 1)).toFixed(1)}% longer)` : "(this film matches it)"}`; el.innerHTML = s; };
+  function drawSteiner(t) {
+    const dpr = fit(stCv); st.setTransform(dpr, 0, 0, dpr, 0, 0); const w = W2(), h = H2();
+    const g = st.createLinearGradient(0, 0, w, h); g.addColorStop(0, "#0B1017"); g.addColorStop(1, "#06080C"); st.fillStyle = g; st.fillRect(0, 0, w, h);
+    st.strokeStyle = "rgba(160,190,230,0.06)"; st.lineWidth = 1; for (let k = 1; k < 8; k++) { st.beginPath(); st.moveTo(0, h * k / 8); st.lineTo(w, h * k / 8 - 30); st.stroke(); }   // the glass
+    if (net) {
+      if (relaxing) { for (let k = 0; k < 6; k++) if (net.step(0.35) < 1e-6) { relaxing = 0; readSteiner(); break; } }
+      st.lineCap = "butt";
+      net.edges.forEach(([a, b], k) => { const A = toS(net.P(a)), B = toS(net.P(b)), len = Math.hypot(B[0] - A[0], B[1] - A[1]), segs = Math.max(8, Math.ceil(len / 4));   // each wall: a thin film seen edge-on, its colour varying with thickness
+        const glow = st.createLinearGradient(A[0], A[1], B[0], B[1]);
+        for (let s = 0; s <= 12; s++) { const u = s / 12, d = 520 + 170 * Math.sin(3.2 * u * (1 + len / 400) + k * 1.7 + 0.6 * t) + 60 * Math.sin(8 * u - 1.1 * t + k), c = lutRGB(d); glow.addColorStop(u, `rgba(${c[0]},${c[1]},${c[2]},0.28)`); }
+        st.strokeStyle = glow; st.lineWidth = 9; st.beginPath(); st.moveTo(A[0], A[1]); st.lineTo(B[0], B[1]); st.stroke();
+        const core = st.createLinearGradient(A[0], A[1], B[0], B[1]);
+        for (let s = 0; s <= 24; s++) { const u = s / 24, d = 520 + 170 * Math.sin(3.2 * u * (1 + len / 400) + k * 1.7 + 0.6 * t) + 60 * Math.sin(8 * u - 1.1 * t + k), c = lutRGB(d); core.addColorStop(u, `rgb(${c[0]},${c[1]},${c[2]})`); }
+        st.strokeStyle = core; st.lineWidth = 3; st.beginPath(); st.moveTo(A[0], A[1]); st.lineTo(B[0], B[1]); st.stroke(); });
+      if (show120 && !relaxing) net.jx.forEach((J, k) => { const c = toS(J), nb = net.nbrs(pins.length + k).map(net.P); const ang = nb.map(q => Math.atan2(q.y - J.y, q.x - J.x)).sort((a, b) => a - b);
+        st.strokeStyle = "rgba(255,181,71,0.85)"; st.lineWidth = 1.5; for (let i = 0; i < ang.length; i++) { const a0 = ang[i], a1 = ang[(i + 1) % ang.length] + (i === ang.length - 1 ? TAU : 0); st.beginPath(); st.arc(c[0], c[1], 13, a0 + 0.08, a1 - 0.08); st.stroke(); }
+        st.fillStyle = "#FFB547"; st.beginPath(); st.arc(c[0], c[1], 2.5, 0, TAU); st.fill(); });
+    }
+    pins.forEach(p => { const [x, y] = toS(p), gr = st.createRadialGradient(x - 3, y - 3, 1, x, y, 9); gr.addColorStop(0, "#F4F7FA"); gr.addColorStop(0.5, "#9AA3B2"); gr.addColorStop(1, "#3E4552"); st.fillStyle = gr; st.beginPath(); st.arc(x, y, 9, 0, TAU); st.fill(); });
+  }
+
+  // ---------------------------------------------------------------- Plateau's frames
+  const fr = Film3D.Renderer(document.getElementById("frames"), { dist: 5.6, auto: 0.15, pitch: 0.4 }); listeners.push(l => fr.setLight(l));
+  let frame = "tetra", frFilm = null, frRelax = 0, frLines = true, frDots = true;
+  const frBuild = () => { frFilm = frame === "tetra" ? Surface.tetrahedron(14) : Surface.cube(10, 0.25 + 0.3 * Math.random(), Math.floor(Math.random() * 3));
+    fr.setWires(frFilm.wires, 0.035); frRelax = 1; };
+  document.querySelectorAll("[data-frame]").forEach(b => b.onclick = () => { frame = b.dataset.frame; document.querySelectorAll("[data-frame]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); frBuild(); });
+  document.getElementById("frDip").onclick = frBuild;
+  document.getElementById("frLines").onclick = e => { frLines = !frLines; e.target.setAttribute("aria-pressed", String(frLines)); };
+  document.getElementById("frDots").onclick = e => { frDots = !frDots; e.target.setAttribute("aria-pressed", String(frDots)); };
+  const deg = x => x * 180 / Math.PI, angUV = (u, v) => deg(Math.acos(clamp(u[0] * v[0] + u[1] * v[1] + u[2] * v[2], -1, 1)));
+  const frMeasure = () => {
+    const f = frFilm, tv = f.V.map((_, i) => i).filter(i => f.tripleNb[i].length === 2 && f.patchCount[i] === 3); let a3 = [];
+    for (const i of tv.filter((_, k) => k % 7 === 3).slice(0, 12)) { const L = f.tripleAngles(i); if (L && L.length === 3) a3.push(angUV(L[0], L[1]), angUV(L[1], L[2]), angUV(L[0], L[2])); }
+    const a4 = []; for (const j of f.junctions) { const tl = f.tripleNb[j].map(k => { const v = [f.V[k][0] - f.V[j][0], f.V[k][1] - f.V[j][1], f.V[k][2] - f.V[j][2]], l = Math.hypot(...v); return v.map(x => x / l); }); for (let p = 0; p < tl.length; p++) for (let q = p + 1; q < tl.length; q++) a4.push(angUV(tl[p], tl[q])); }
+    const mean = a => a.reduce((s, x) => s + x, 0) / a.length;
+    document.getElementById("frRead").innerHTML = `film area <b>${f.area().toFixed(4)}</b><br>angle between films along triple lines: <b>${a3.length ? mean(a3).toFixed(1) + "°" : "–"}</b> (Plateau: 120°)<br>angle between triple lines at the junction${f.junctions.length > 1 ? "s" : ""}: <b>${a4.length ? mean(a4).toFixed(1) + "°" : "–"}</b> (Plateau: 109.5°)`;
+  };
+  frBuild();
+
+  // ---------------------------------------------------------------- catenoid
+  const ca = Film3D.Renderer(document.getElementById("cat"), { dist: 5.0, auto: 0.1, pitch: 0.25 }); listeners.push(l => ca.setLight(l));
+  const catH = document.getElementById("catH"); let prof = null, collapsed = false, pulling = false;
+  const ringPts = (y, R = 1, n = 80) => Array.from({ length: n + 1 }, (_, i) => [R * Math.cos(TAU * i / n), y, R * Math.sin(TAU * i / n)]);
+  const catSet = hr => { collapsed = false; prof = Catenoid.Profile(hr, 1, 101); ca.setWires([ringPts(hr / 2), ringPts(-hr / 2)], 0.03); ca.setLines([]); ca.setDots([]); };
+  catH.oninput = () => { const hr = +catH.value; if (collapsed || !prof) catSet(hr); else { prof.setH(hr); ca.setWires([ringPts(hr / 2), ringPts(-hr / 2)], 0.03); } };
+  document.getElementById("catPull").onclick = () => { pulling = true; if (collapsed) { catH.value = 0.9; catSet(0.9); } };
+  document.getElementById("catReset").onclick = () => { pulling = false; catH.value = 0.9; catSet(0.9); };
+  catSet(0.9);
+  const chCv = document.getElementById("catChart"), ch = chCv.getContext("2d");
+  function drawChart(hr) {
+    const dpr = fit(chCv); ch.setTransform(dpr, 0, 0, dpr, 0, 0); const w = chCv.clientWidth, h = chCv.clientHeight; ch.clearRect(0, 0, w, h);
+    const x0 = 44, x1 = w - 12, y0 = h - 30, y1 = 14, X = v => x0 + (x1 - x0) * (v - 0.2) / 1.2, Y = a => y0 - (y0 - y1) * (a - 0) / 9.5;
+    ch.strokeStyle = "#1E2533"; ch.lineWidth = 1; ch.font = "12px IBM Plex Mono"; ch.fillStyle = "#8A95AA";
+    for (let a = 0; a <= 9; a += 3) { ch.beginPath(); ch.moveTo(x0, Y(a)); ch.lineTo(x1, Y(a)); ch.stroke(); ch.textAlign = "right"; ch.fillText(a, x0 - 6, Y(a) + 4); }
+    for (const v of [0.4, 0.8, 1.2]) { ch.textAlign = "center"; ch.fillText(v.toFixed(1), X(v), y0 + 16); }
+    ch.fillText("h / R", (x0 + x1) / 2 + 60, y0 + 16);
+    const band = (a, b, col) => { ch.fillStyle = col; ch.fillRect(X(a), y1, X(b) - X(a), y0 - y1); };
+    band(Catenoid.HR_EQUAL, Catenoid.HR_MAX, "rgba(255,181,71,0.08)"); band(Catenoid.HR_MAX, 1.4, "rgba(255,107,107,0.07)");
+    const line = (f, col, dash) => { ch.strokeStyle = col; ch.lineWidth = 2; ch.setLineDash(dash || []); ch.beginPath(); let on = false; for (let v = 0.2; v <= Catenoid.HR_MAX; v += 0.003) { const s = Catenoid.solve(v); if (!s) break; const y = Y(f(s, v)); on ? ch.lineTo(X(v), y) : ch.moveTo(X(v), y); on = true; } ch.stroke(); ch.setLineDash([]); };
+    line((s, v) => Catenoid.area(s.stable, v), "#4FD1C5"); line((s, v) => Catenoid.area(s.unstable, v), "#4FD1C5", [4, 4]);
+    ch.strokeStyle = "#B28DFF"; ch.lineWidth = 2; ch.beginPath(); ch.moveTo(X(0.2), Y(2 * Math.PI)); ch.lineTo(X(1.4), Y(2 * Math.PI)); ch.stroke();
+    ch.textAlign = "left"; ch.fillStyle = "#4FD1C5"; ch.fillText("catenoid", X(0.25), Y(Catenoid.area(Catenoid.solve(0.35).stable, 0.35)) - 8); ch.fillStyle = "#B28DFF"; ch.fillText("two flat disks", X(0.25), Y(2 * Math.PI) - 8);
+    ch.fillStyle = "#8A95AA"; ch.fillText("dashed: the unstable, thinner catenoid", X(0.25), y1 + 12);
+    const A = collapsed ? 2 * Math.PI : prof ? prof.area() : 0; ch.fillStyle = "#FFFFFF"; ch.beginPath(); ch.arc(X(hr), Y(A), 5, 0, TAU); ch.fill();
+  }
+
+  // ---------------------------------------------------------------- the draining film
+  const drCv = document.getElementById("drain"), dr = drCv.getContext("2d"); let drT = 0, drPaused = false; const DW = 180, DH = 240, img = dr.createImageData(DW, DH);
+  const drOff = document.createElement("canvas"); drOff.width = DW; drOff.height = DH; const drO = drOff.getContext("2d");
+  document.getElementById("drRestart").onclick = () => { drT = 0; }; document.getElementById("drPause").onclick = e => { drPaused = !drPaused; e.target.setAttribute("aria-pressed", String(drPaused)); };
+  const thickAt = (x, y, t) => {                                   // nm: a wedge that thins from the top over time, with slow convection swirls
+    const top = 30 + 900 * Math.exp(-t / 9), bottom = 1500 + 200 * Math.exp(-t / 20), u = Math.pow(y, 1.3 + 0.3 * Math.exp(-t / 15));
+    const sw = (60 + 60 * y) * Math.sin(6 * x + 2.2 * Math.sin(5 * y - 0.4 * t) + 0.3 * t) * Math.sin(4 * y + 1.5 * Math.sin(3 * x + 0.3 * t));
+    return Math.max(8, top + (bottom - top) * u + sw * Math.min(1, t / 3));
+  };
+  function drawDrain() {
+    const dpr = fit(drCv), w = drCv.clientWidth, h = drCv.clientHeight; dr.setTransform(dpr, 0, 0, dpr, 0, 0); dr.fillStyle = "#05070B"; dr.fillRect(0, 0, w, h);
+    for (let j = 0; j < DH; j++) for (let i = 0; i < DW; i++) { const c = lutRGB(thickAt(i / DW, j / DH, drT)), k = 4 * (j * DW + i); img.data[k] = c[0]; img.data[k + 1] = c[1]; img.data[k + 2] = c[2]; img.data[k + 3] = 255; }
+    drO.putImageData(img, 0, 0); const fw = Math.min(w - 60, (h - 40) * DW / DH), fh = fw * DH / DW, fx = (w - fw) / 2, fy = (h - fh) / 2;
+    dr.imageSmoothingEnabled = true; dr.drawImage(drOff, fx, fy, fw, fh); dr.strokeStyle = "#8C95A4"; dr.lineWidth = 4; dr.strokeRect(fx - 2, fy - 2, fw + 4, fh + 4);
+    // readout: thickness at top and bottom; under sodium, the number of dark stripes between them
+    const dTop = thickAt(0.5, 0.01, drT), dBot = thickAt(0.5, 0.99, drT);
+    document.getElementById("drRead").innerHTML = `thickness near the top: <b>${dTop.toFixed(0)} nm</b><br>near the bottom: <b>${dBot.toFixed(0)} nm</b><br>${LIGHT === "sodium" ? `dark stripes top to bottom: <b>${Math.floor(dBot / FilmColor.FRINGE_NM) - Math.floor(dTop / FilmColor.FRINGE_NM)}</b> × 221 nm ≈ <b>${((Math.floor(dBot / FilmColor.FRINGE_NM) - Math.floor(dTop / FilmColor.FRINGE_NM)) * FilmColor.FRINGE_NM).toFixed(0)} nm</b> thicker at the bottom` : "switch to the sodium lamp to count stripes"}`;
+    document.getElementById("drCap").textContent = dTop < 40 ? "the top has gone black: thinner than ~30 nm, it is about to pop" : `a film draining for ${drT.toFixed(0)} s (sped up)`;
+  }
+
+  // ---------------------------------------------------------------- main loop
+  let last = performance.now();
+  function frame_(now) {
+    const dt = Math.min(0.05, (now - last) / 1000), t = now / 1000; last = now;
+    if (heroRelax) { let m = 0; for (let k = 0; k < 80; k++) m = heroFilm.step(); if (m < 2e-7) heroRelax = false; }
+    if (visible(hero.canvas)) { hero.setFilm(...Film3D.filmArrays(heroFilm, t)); hero.draw(dt, { alpha: 0.85 }); }
+    if (visible(stCv)) drawSteiner(t);
+    if (visible(fr.canvas) && frFilm) {
+      if (frRelax) { let m = 0; for (let k = 0; k < 60; k++) m = frFilm.step(); if (m < 2e-7) frRelax = 0; frMeasure(); }
+      fr.setFilm(...Film3D.filmArrays(frFilm, t)); fr.setLines(frLines ? Film3D.tripleLines(frFilm) : [], 0.012); fr.setDots(frDots ? frFilm.junctions.map(j => frFilm.V[j]) : [], 0.045); fr.draw(dt, { alpha: 0.85 });
+      document.getElementById("frCap").textContent = frRelax ? "relaxing…" : "settled · drag to turn";
+    }
+    if (visible(ca.canvas) && prof) {
+      let hr = +catH.value;
+      if (pulling && !collapsed) { hr = Math.min(1.4, hr + dt * 0.08); catH.value = hr; prof.setH(hr); ca.setWires([ringPts(hr / 2), ringPts(-hr / 2)], 0.03); }
+      if (!collapsed) { if (hr > Catenoid.HR_MAX && prof.neck() > 0.3) for (let i = 1; i < prof.M - 1; i++) prof.r[i] -= 0.002 * Math.cos(Math.PI * prof.z[i] / prof.h); prof.step(hr > Catenoid.HR_MAX ? 1500 : 300); if (prof.pinched) { collapsed = true; pulling = false; } }
+      if (collapsed) { const d1 = Catenoid.disk(hr / 2, 1, 72, 18, t), d2 = Catenoid.disk(-hr / 2, 1, 72, 18, t + 2); const n1 = d1[0].length / 3;
+        const P = new Float32Array([...d1[0], ...d2[0]]), N = new Float32Array([...d1[1], ...d2[1]]), D = new Float32Array([...d1[2], ...d2[2]]), I = new Uint32Array([...d1[3], ...Array.from(d2[3], x => x + n1)]); ca.setFilm(P, N, D, I); }
+      else ca.setFilm(...Catenoid.revolve(Array.from(prof.z), Array.from(prof.r), 72, t));
+      ca.draw(dt, { alpha: 0.85 });
+      document.getElementById("catHv").textContent = hr.toFixed(3); document.getElementById("catCap").textContent = collapsed ? "collapsed into two flat disks" : hr > Catenoid.HR_MAX ? "no catenoid exists here: the waist is pinching…" : hr > Catenoid.HR_EQUAL ? "a catenoid, but with more area than two disks: a local minimum" : "a catenoid: the least area for these rings";
+      drawChart(hr);
+    }
+    if (visible(drCv)) { if (!drPaused) drT += dt * 2.5; drawDrain(); }
+    requestAnimationFrame(frame_);
+  }
+  preset("rand7"); readSteiner(); requestAnimationFrame(frame_);
+  window.__soap = { setLamp, preset, doBest };
+})();
+</script></body></html>
