@@ -90,7 +90,9 @@
     const V = film.V, n = V.length, P = new Float32Array(n * 3), N = new Float32Array(n * 3), D = new Float32Array(n), I = new Uint32Array(film.tris.length * 3);
     let ymin = Infinity, ymax = -Infinity; for (const v of V) { ymin = Math.min(ymin, v[1]); ymax = Math.max(ymax, v[1]); }
     const top = thick.top ?? 250, bottom = thick.bottom ?? 1100, sw = thick.swirl ?? 90;
+    const pid = thick.fn ? film.patchOf || (film.patchOf = (() => { const pv = new Int32Array(n).fill(-1); film.tris.forEach((tr, k) => tr.forEach(q => { if (pv[q] < 0) pv[q] = film.triPatch[k]; })); return pv; })()) : null;
     for (let i = 0; i < n; i++) { const v = V[i]; P.set(v, 3 * i); const u = (ymax - v[1]) / (ymax - ymin + 1e-9);
+      if (thick.fn) { D[i] = thick.fn(0.5 + 0.22 * (v[0] + 0.6 * v[2]) + 0.31 * pid[i], 1 - u); continue; }      // thickness from a live film-flow simulation: bands from drainage, plumes, swirls
       D[i] = top + (bottom - top) * Math.pow(u, 1.6) + sw * Math.sin(3.1 * v[0] + 1.3 * t + 2.0 * Math.sin(2.3 * v[2] - 0.7 * t)) * Math.sin(2.7 * v[2] + 0.9 * t + 1.7 * Math.sin(1.9 * v[1] + 0.5 * t)); }
     film.tris.forEach(([a, b, c], k) => { I[3 * k] = a; I[3 * k + 1] = b; I[3 * k + 2] = c; const e1 = sub(V[b], V[a]), e2 = sub(V[c], V[a]), nn = cross(e1, e2); for (const q of [a, b, c]) { N[3 * q] += nn[0]; N[3 * q + 1] += nn[1]; N[3 * q + 2] += nn[2]; } });
     return [P, N, D, I];

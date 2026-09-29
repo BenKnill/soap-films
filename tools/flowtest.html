@@ -1,0 +1,8 @@
+<!doctype html><html><body style="margin:0;background:#000"><canvas id="c" style="width:640px;height:640px;display:block"></canvas>
+<script src="../docs/filmcolor.js"></script><script src="../docs/soapflow.js"></script>
+<script>
+const q = new URLSearchParams(location.search), mode = q.get("mode") || "bubble", steps = +(q.get("steps") || 900), params = JSON.parse(q.get("p") || "{}");
+const S = SoapFlow.create(document.getElementById("c"), { mode, params, preserve: true, light: q.get("light") || "day" });
+for (let k = 0; k < steps; k++) S.step(1);
+S.draw(0, { flat: true }); window.done = true;
+</script></body></html>

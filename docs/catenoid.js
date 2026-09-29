@@ -40,7 +40,7 @@
       for (let j = 0; j <= S; j++) { const th = 2 * Math.PI * j / S, c = Math.cos(th), s = Math.sin(th), k = i * (S + 1) + j;
         P[3 * k] = rs[i] * c; P[3 * k + 1] = zs[i]; P[3 * k + 2] = rs[i] * s; N[3 * k] = dz / l * c; N[3 * k + 1] = -dr / l; N[3 * k + 2] = dz / l * s;
         const x = rs[i] * c, zz = rs[i] * s, u = (ymax - zs[i]) / (ymax - ymin + 1e-9);            // drains toward the lower ring (y is up)
-        D[k] = top + (bottom - top) * u * u + 70 * Math.sin(2.4 * x + 1.1 * t + 1.6 * Math.sin(2.1 * zz - 0.6 * t)) * Math.sin(2.2 * zz + 0.8 * t); }
+        D[k] = thick.fn ? thick.fn(j / S * 1.7, 1 - u) : top + (bottom - top) * u * u + 70 * Math.sin(2.4 * x + 1.1 * t + 1.6 * Math.sin(2.1 * zz - 0.6 * t)) * Math.sin(2.2 * zz + 0.8 * t); }
     }
     let q = 0; for (let i = 0; i < M - 1; i++) for (let j = 0; j < S; j++) { const a = i * (S + 1) + j, b = a + 1, c = a + S + 1, d = c + 1; I[q++] = a; I[q++] = c; I[q++] = b; I[q++] = b; I[q++] = c; I[q++] = d; }
     return [P, N, D, I];

@@ -40,17 +40,17 @@
     <button id="st120" aria-pressed="true">120° marks</button>
   </div>
   <div class="read" id="stRead"></div>
-  <p class="note">Dip a few times with 7 or 10 pins. The film often settles on a network that is <i>locally</i> shortest, where no small wiggle helps, but longer than the best one found by many dips. Sometimes it's even longer than just joining the pins directly.</p>
+  <p class="note">Dip a few times with 7 or 10 pins. The film often settles on a network that is <i>locally</i> shortest, where no small wiggle helps, but longer than the best one found by many dips. Sometimes it's even longer than just joining the pins directly. Try the hexagon: the shortest network is just five of the six sides, with no junctions at all, yet the film also settles into networks about 4% and 6% longer. Those are the same three answers real soap gave Dutta, Khastgir and Roy in 2010. The computer scientist Scott Aaronson tried this with glass plates and copper pegs. With a few pegs the film found the best network, but with more pegs it often didn't.</p>
 
   <h2>Only two ways to meet</h2>
-  <p>Dip a wire frame and the films meet along lines and at points. The Belgian physicist Joseph Plateau catalogued what he saw in the nineteenth century. Films only ever meet <b>three at a time, at 120°</b>, and those lines only ever meet <b>four at a time</b>, at about <b>109.5°</b>, the angle from the centre of a tetrahedron to its corners. In 1976 the mathematician Jean Taylor proved that these are the only possibilities.</p>
+  <p>Dip a wire frame and the films meet along lines and at points. In 1873 the Belgian physicist Joseph Plateau set down the rules. By then he had been blind for thirty years, and others dipped the frames and told him what they saw. Films only ever meet <b>three at a time, at 120°</b>, and those lines only ever meet <b>four at a time</b>, at about <b>109.5°</b>, the angle from the centre of a tetrahedron to its corners. In 1976 the mathematician Jean Taylor proved that for area-minimising films these are the only possibilities. Of the ten cone-shaped ways films can balance, only three are stable: a single flat film, three films along a line, and this four-line point.</p>
   <div class="two">
     <div class="stage"><canvas id="frames" style="height:420px"></canvas><div class="overlay" id="frCap"></div></div>
     <div>
       <div class="bar"><button data-frame="tetra" aria-pressed="true">tetrahedron</button><button data-frame="cube">cube</button><button id="frDip">dip again</button></div>
       <div class="bar"><button id="frLines" aria-pressed="true">triple lines</button><button id="frDots" aria-pressed="true">junctions</button></div>
       <p class="read" id="frRead"></p>
-      <p class="note">Nothing here is told to make 120° or 109.5°. The simulation only moves the film downhill in area. The wires hold their edges, and everything else is free. The angles appear by themselves, because three equal pulls only balance at 120°.</p>
+      <p class="note">Nothing here is told to make 120° or 109.5°. The simulation only moves the film downhill in area. The wires hold their edges, and everything else is free. The angles appear by themselves, because three equal pulls only balance at 120°. In the cube, the little central square saves only 0.07% of area over films meeting in a single point at the centre, yet that point never forms: it isn't one of the two allowed junctions.</p>
     </div>
   </div>
 
@@ -66,19 +66,32 @@
     </div>
   </div>
 
-  <h2>Colours, and a sodium lamp</h2>
-  <p>Hold a film upright and it drains. Water slides down, the top thins, and the colour bands creep downward. Where the film gets thinner than about a thirtieth of a wavelength, both reflections cancel and it turns black, just before it pops.</p>
+  <h2>Why bubbles swirl like Jupiter</h2>
+  <p>Watch a bubble for a while and its colours drift in slow, round storms. A soap film is a <b>two-dimensional fluid</b>: thousands of times thinner than it is wide, it can only flow sideways within its sheet. In two dimensions, small eddies tend to merge into larger, long-lived vortices rather than break apart, the physics behind Jupiter's storms. The film's thickness barely diffuses, so the flow stretches it into fine threads and winds them into spirals, and the colours show every one.</p>
   <div class="two">
-    <div class="stage"><canvas id="drain" style="height:420px"></canvas><div class="overlay" id="drCap"></div></div>
+    <div class="stage"><canvas id="bubble" style="height:440px"></canvas><div class="overlay" id="buCap">a half bubble on a warm plate · drag to turn</div></div>
+    <div>
+      <div class="bar"><span class="read">warmth of the plate</span><input type="range" id="buHeat" min="0" max="2" step="0.01" value="1"></div>
+      <div class="bar"><span class="read">spin of the plate</span><input type="range" id="buSpin" min="0" max="0.08" step="0.001" value="0.04"></div>
+      <div class="bar"><button id="buReset">new bubble</button><button id="buFast" aria-pressed="false">speed ×3</button></div>
+      <p class="note">What stirs it here: the plate warms the foot of the bubble, and warm film is lighter, so it rises toward the top in plumes. Fresh, thick film is drawn up from the wet plate while the top drains thinner. Turn the warmth down and the storms slowly die away. Spin the plate and the film feels a Coriolis force, as a planet's atmosphere does: plumes curl into isolated, hurricane-like vortices with calm eyes, which is what Hamid Kellay's group in Bordeaux saw on heated, rotating half-bubbles.</p>
+      <p class="note">This is a simulation: an incompressible 2D flow on the bubble's surface, with buoyancy, carrying temperature and thickness. The colours come from the thickness.</p>
+    </div>
+  </div>
+
+  <h2>Colours, and a sodium lamp</h2>
+  <p>Hold a film upright in a frame and it drains. Water slides down, so the film is thick at the bottom and thin at the top, and the colours sort themselves into bands. Near the frame, thin film is pulled out of the edges. Being lighter, it rises in plumes and curls into swirls. Where the film gets thinner than a few tens of nanometres, the two reflections cancel and it turns black, just before it pops.</p>
+  <div class="two">
+    <div class="stage"><canvas id="drain" style="height:460px"></canvas><div class="overlay" id="drCap"></div></div>
     <div>
       <div class="bar"><button id="drRestart">new film</button><button id="drPause" aria-pressed="false">pause</button></div>
       <p class="read" id="drRead"></p>
       <p class="note">Under a sodium lamp there is only one wavelength, 589 nm. Each spot is simply bright or dark. Going from one dark stripe to the next, the film gets thicker by half a wavelength inside water, about <b>221 nm</b>. Count the stripes and you have measured the film.</p>
     </div>
   </div>
-  <footer>Episode 4 of the series after <a href="https://benknill.github.io/rhine-dimples" style="color:#6FA8FF">Dimples on the Rhine</a>. Simulations run in your browser: a 2D film network on gradient descent with topology changes; a 3D area minimiser on triangle meshes; an axisymmetric curvature flow for the catenoid; thin-film interference from the CIE colour-matching functions.</footer>
+  <footer>Sources and credits are collected in the project's research notes: Plateau (1873), Taylor (<i>Ann. Math.</i> 1976), Garey, Graham &amp; Johnson (1977), Aaronson (<i>SIGACT News</i> 2005), Dutta, Khastgir &amp; Roy (<i>Am. J. Phys.</i> 2010), Couder, Chomaz &amp; Rabaud (1989), Seychelles et al. (<i>PRL</i> 2008), Meuel et al. (<i>Sci. Rep.</i> 2013), Greffier, Amarouchene &amp; Kellay (<i>PRL</i> 2002), Goldstein et al. (<i>PRE</i> 2021) for the catenoid numbers.<br><br>Episode 4 of the series after <a href="https://benknill.github.io/rhine-dimples" style="color:#6FA8FF">Dimples on the Rhine</a>. Simulations run in your browser: a 2D film network on gradient descent with topology changes; a 3D area minimiser on triangle meshes; an axisymmetric curvature flow for the catenoid; an incompressible 2D flow on the GPU for the swirls; thin-film interference from the CIE colour-matching functions.</footer>
 </div>
-<script src="filmcolor.js"></script><script src="steiner.js"></script><script src="surface.js"></script><script src="catenoid.js"></script><script src="film3d.js"></script>
+<script src="filmcolor.js"></script><script src="steiner.js"></script><script src="surface.js"></script><script src="catenoid.js"></script><script src="film3d.js"></script><script src="soapflow.js"></script>
 <script>
 (() => {
   const TAU = 2 * Math.PI, clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
@@ -89,6 +102,10 @@
   const fit = cv => { const dpr = Math.min(2, window.devicePixelRatio || 1), w = Math.round(cv.clientWidth * dpr), h = Math.round(cv.clientHeight * dpr); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; } return dpr; };
   const visible = el => { const r = el.getBoundingClientRect(); return r.bottom > -50 && r.top < innerHeight + 50; };
 
+  // ---------------------------------------------------------------- a hidden film-flow simulation whose thickness field colours the 3D films
+  const skinCv = document.createElement("canvas"); skinCv.width = skinCv.height = 8; skinCv.style.cssText = "position:absolute;width:8px;height:8px;opacity:0;pointer-events:none"; document.body.appendChild(skinCv);
+  const skin = SoapFlow.create(skinCv, { mode: "frame", NX: 160, NY: 200, params: { hTop: 200, hBot: 1100 } }); for (let k = 0; k < 500; k++) skin.step(1);
+  let skinFn = skin.sampler(), skinFrames = 0;
   // ---------------------------------------------------------------- hero: a cube film, relaxed in the background
   const hero = Film3D.Renderer(document.getElementById("hero"), { dist: 5.4, auto: 0.18, pitch: 0.42 });
   listeners.push(l => hero.setLight(l));
@@ -184,36 +201,33 @@
     const A = collapsed ? 2 * Math.PI : prof ? prof.area() : 0; ch.fillStyle = "#FFFFFF"; ch.beginPath(); ch.arc(X(hr), Y(A), 5, 0, TAU); ch.fill();
   }
 
-  // ---------------------------------------------------------------- the draining film
-  const drCv = document.getElementById("drain"), dr = drCv.getContext("2d"); let drT = 0, drPaused = false; const DW = 180, DH = 240, img = dr.createImageData(DW, DH);
-  const drOff = document.createElement("canvas"); drOff.width = DW; drOff.height = DH; const drO = drOff.getContext("2d");
-  document.getElementById("drRestart").onclick = () => { drT = 0; }; document.getElementById("drPause").onclick = e => { drPaused = !drPaused; e.target.setAttribute("aria-pressed", String(drPaused)); };
-  const thickAt = (x, y, t) => {                                   // nm: a wedge that thins from the top over time, with slow convection swirls
-    const top = 30 + 900 * Math.exp(-t / 9), bottom = 1500 + 200 * Math.exp(-t / 20), u = Math.pow(y, 1.3 + 0.3 * Math.exp(-t / 15));
-    const sw = (60 + 60 * y) * Math.sin(6 * x + 2.2 * Math.sin(5 * y - 0.4 * t) + 0.3 * t) * Math.sin(4 * y + 1.5 * Math.sin(3 * x + 0.3 * t));
-    return Math.max(8, top + (bottom - top) * u + sw * Math.min(1, t / 3));
-  };
-  function drawDrain() {
-    const dpr = fit(drCv), w = drCv.clientWidth, h = drCv.clientHeight; dr.setTransform(dpr, 0, 0, dpr, 0, 0); dr.fillStyle = "#05070B"; dr.fillRect(0, 0, w, h);
-    for (let j = 0; j < DH; j++) for (let i = 0; i < DW; i++) { const c = lutRGB(thickAt(i / DW, j / DH, drT)), k = 4 * (j * DW + i); img.data[k] = c[0]; img.data[k + 1] = c[1]; img.data[k + 2] = c[2]; img.data[k + 3] = 255; }
-    drO.putImageData(img, 0, 0); const fw = Math.min(w - 60, (h - 40) * DW / DH), fh = fw * DH / DW, fx = (w - fw) / 2, fy = (h - fh) / 2;
-    dr.imageSmoothingEnabled = true; dr.drawImage(drOff, fx, fy, fw, fh); dr.strokeStyle = "#8C95A4"; dr.lineWidth = 4; dr.strokeRect(fx - 2, fy - 2, fw + 4, fh + 4);
-    // readout: thickness at top and bottom; under sodium, the number of dark stripes between them
-    const dTop = thickAt(0.5, 0.01, drT), dBot = thickAt(0.5, 0.99, drT);
-    document.getElementById("drRead").innerHTML = `thickness near the top: <b>${dTop.toFixed(0)} nm</b><br>near the bottom: <b>${dBot.toFixed(0)} nm</b><br>${LIGHT === "sodium" ? `dark stripes top to bottom: <b>${Math.floor(dBot / FilmColor.FRINGE_NM) - Math.floor(dTop / FilmColor.FRINGE_NM)}</b> × 221 nm ≈ <b>${((Math.floor(dBot / FilmColor.FRINGE_NM) - Math.floor(dTop / FilmColor.FRINGE_NM)) * FilmColor.FRINGE_NM).toFixed(0)} nm</b> thicker at the bottom` : "switch to the sodium lamp to count stripes"}`;
-    document.getElementById("drCap").textContent = dTop < 40 ? "the top has gone black: thinner than ~30 nm, it is about to pop" : `a film draining for ${drT.toFixed(0)} s (sped up)`;
+  // ---------------------------------------------------------------- the half bubble and the framed film: real 2D flow
+  const bubble = SoapFlow.create(document.getElementById("bubble"), { mode: "bubble" }); listeners.push(l => bubble.setLight(l));
+  const buBase = { ...bubble.params }; let buFast = false;
+  document.getElementById("buHeat").oninput = e => { const k = +e.target.value; bubble.params.heat = buBase.heat * k; bubble.params.buoy = buBase.buoy * (0.4 + 0.6 * Math.min(1, k)); };
+  document.getElementById("buSpin").oninput = e => { bubble.params.spin = +e.target.value; };
+  document.getElementById("buReset").onclick = () => bubble.reset(); document.getElementById("buFast").onclick = e => { buFast = !buFast; e.target.setAttribute("aria-pressed", String(buFast)); };
+  const drain = SoapFlow.create(document.getElementById("drain"), { mode: "frame" }); listeners.push(l => drain.setLight(l)); let drPaused = false, drFrames = 0, drProfile = null;
+  document.getElementById("drRestart").onclick = () => { drain.reset(); drFrames = 0; }; document.getElementById("drPause").onclick = e => { drPaused = !drPaused; e.target.setAttribute("aria-pressed", String(drPaused)); };
+  for (let k = 0; k < 240; k++) { bubble.step(1); drain.step(1); }                                // let both get going before you scroll to them
+  function drainRead() {
+    const st = drain.readState(), NX = drain.NX, NY = drain.NY, col = y => { let s = 0, n = 0; for (let x = Math.floor(NX * 0.3); x < NX * 0.7; x++) { s += st[4 * (y * NX + x) + 3]; n++; } return s / n; };
+    const dTop = col(NY - 6), dBot = col(5), stripes = Math.floor(dBot / FilmColor.FRINGE_NM) - Math.floor(dTop / FilmColor.FRINGE_NM);
+    document.getElementById("drRead").innerHTML = `thickness near the top: <b>${dTop.toFixed(0)} nm</b><br>near the bottom: <b>${dBot.toFixed(0)} nm</b><br>${LIGHT === "sodium" ? `dark stripes top to bottom: <b>${stripes}</b> × 221 nm ≈ <b>${(stripes * FilmColor.FRINGE_NM).toFixed(0)} nm</b> thicker at the bottom` : "switch to the sodium lamp to count stripes"}`;
+    document.getElementById("drCap").textContent = dTop < 45 ? "the top has gone black: thinner than a few tens of nanometres" : "a vertical film draining in a frame (simulated)";
   }
 
   // ---------------------------------------------------------------- main loop
   let last = performance.now();
   function frame_(now) {
     const dt = Math.min(0.05, (now - last) / 1000), t = now / 1000; last = now;
+    skin.step(1); if (++skinFrames % 4 === 0) skinFn = skin.sampler();
     if (heroRelax) { let m = 0; for (let k = 0; k < 80; k++) m = heroFilm.step(); if (m < 2e-7) heroRelax = false; }
-    if (visible(hero.canvas)) { hero.setFilm(...Film3D.filmArrays(heroFilm, t)); hero.draw(dt, { alpha: 0.85 }); }
+    if (visible(hero.canvas)) { hero.setFilm(...Film3D.filmArrays(heroFilm, t, { fn: skinFn })); hero.draw(dt, { alpha: 0.85 }); }
     if (visible(stCv)) drawSteiner(t);
     if (visible(fr.canvas) && frFilm) {
       if (frRelax) { let m = 0; for (let k = 0; k < 60; k++) m = frFilm.step(); if (m < 2e-7) frRelax = 0; frMeasure(); }
-      fr.setFilm(...Film3D.filmArrays(frFilm, t)); fr.setLines(frLines ? Film3D.tripleLines(frFilm) : [], 0.012); fr.setDots(frDots ? frFilm.junctions.map(j => frFilm.V[j]) : [], 0.045); fr.draw(dt, { alpha: 0.85 });
+      fr.setFilm(...Film3D.filmArrays(frFilm, t, { fn: skinFn })); fr.setLines(frLines ? Film3D.tripleLines(frFilm) : [], 0.012); fr.setDots(frDots ? frFilm.junctions.map(j => frFilm.V[j]) : [], 0.045); fr.draw(dt, { alpha: 0.85 });
       document.getElementById("frCap").textContent = frRelax ? "relaxing…" : "settled · drag to turn";
     }
     if (visible(ca.canvas) && prof) {
@@ -222,12 +236,13 @@
       if (!collapsed) { if (hr > Catenoid.HR_MAX && prof.neck() > 0.3) for (let i = 1; i < prof.M - 1; i++) prof.r[i] -= 0.002 * Math.cos(Math.PI * prof.z[i] / prof.h); prof.step(hr > Catenoid.HR_MAX ? 1500 : 300); if (prof.pinched) { collapsed = true; pulling = false; } }
       if (collapsed) { const d1 = Catenoid.disk(hr / 2, 1, 72, 18, t), d2 = Catenoid.disk(-hr / 2, 1, 72, 18, t + 2); const n1 = d1[0].length / 3;
         const P = new Float32Array([...d1[0], ...d2[0]]), N = new Float32Array([...d1[1], ...d2[1]]), D = new Float32Array([...d1[2], ...d2[2]]), I = new Uint32Array([...d1[3], ...Array.from(d2[3], x => x + n1)]); ca.setFilm(P, N, D, I); }
-      else ca.setFilm(...Catenoid.revolve(Array.from(prof.z), Array.from(prof.r), 72, t));
+      else ca.setFilm(...Catenoid.revolve(Array.from(prof.z), Array.from(prof.r), 72, t, { fn: skinFn }));
       ca.draw(dt, { alpha: 0.85 });
       document.getElementById("catHv").textContent = hr.toFixed(3); document.getElementById("catCap").textContent = collapsed ? "collapsed into two flat disks" : hr > Catenoid.HR_MAX ? "no catenoid exists here: the waist is pinching…" : hr > Catenoid.HR_EQUAL ? "a catenoid, but with more area than two disks: a local minimum" : "a catenoid: the least area for these rings";
       drawChart(hr);
     }
-    if (visible(drCv)) { if (!drPaused) drT += dt * 2.5; drawDrain(); }
+    if (visible(bubble.canvas)) { for (let k = 0; k < (buFast ? 3 : 1); k++) bubble.step(1); bubble.draw(dt); }
+    if (visible(drain.canvas)) { if (!drPaused) { drain.step(1); drFrames++; } drain.draw(dt); if (drFrames % 30 === 1) drainRead(); }
     requestAnimationFrame(frame_);
   }
   preset("rand7"); readSteiner(); requestAnimationFrame(frame_);
