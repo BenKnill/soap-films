@@ -1,0 +1,292 @@
+{
+  "status": "PASS",
+  "sourceHashes": {
+    "live.js": "83c4d867dbb6b653468c748790b30e3e424712ca444f46e42b5be04fa0458445",
+    "live-model.js": "ad0cc14013634a3b5b235c1e51391dd5eecca1f3c98cdf806d1701e819cde0d6",
+    "live-guide.html": "43ddc425d358763a95e451275aac22dfb932799581d5f43d3e48075417a2597a"
+  },
+  "comparisonEvidence": [
+    {
+      "dip": 1,
+      "comparison": false,
+      "readout": "First dip: 5.196. This dip is 3.77% shorter."
+    },
+    {
+      "dip": 1,
+      "comparison": true,
+      "readout": "First dip: 5.196. This dip is 3.77% shorter. Five-side network: 5.000. The two networks have equal length within numerical tolerance."
+    }
+  ],
+  "command": "unshare -rn taskset -c 11 node tests/live-browser-smoke.mjs",
+  "source": "/home/bluestar/lanes/presentations/soap-films/docs/live.html",
+  "networkRequests": [],
+  "errors": [],
+  "scenes": [
+    {
+      "scene": 0,
+      "renderer": "canvas2d",
+      "model": {
+        "type": "steiner",
+        "pins": [
+          [
+            1,
+            0
+          ],
+          [
+            0.5,
+            0.8660254
+          ],
+          [
+            -0.5,
+            0.8660254
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            -0.5,
+            -0.8660254
+          ],
+          [
+            0.5,
+            -0.8660254
+          ]
+        ],
+        "edges": [
+          [
+            6,
+            1
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            7,
+            6
+          ],
+          [
+            9,
+            7
+          ]
+        ],
+        "junctions": [
+          [
+            -9.8e-7,
+            0.57735027
+          ],
+          [
+            -0.00000116,
+            -8.3e-7
+          ],
+          [
+            0.49999948,
+            -0.28867603
+          ],
+          [
+            -0.49999994,
+            -0.28867523
+          ]
+        ],
+        "length": 5.19615242,
+        "referenceLength": 5,
+        "referenceEdges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "digest": "bc7d04ff"
+      },
+      "reset": "full snapshot matched"
+    },
+    {
+      "scene": 1,
+      "renderer": "canvas2d",
+      "model": {
+        "type": "steiner",
+        "pins": [
+          [
+            1,
+            0
+          ],
+          [
+            0.5,
+            0.8660254
+          ],
+          [
+            -0.5,
+            0.8660254
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            -0.5,
+            -0.8660254
+          ],
+          [
+            0.5,
+            -0.8660254
+          ]
+        ],
+        "edges": [
+          [
+            6,
+            1
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            7,
+            6
+          ],
+          [
+            9,
+            7
+          ]
+        ],
+        "junctions": [
+          [
+            -9.8e-7,
+            0.57735027
+          ],
+          [
+            -0.00000116,
+            -8.3e-7
+          ],
+          [
+            0.49999948,
+            -0.28867603
+          ],
+          [
+            -0.49999994,
+            -0.28867523
+          ]
+        ],
+        "length": 5.19615242,
+        "referenceLength": 5,
+        "referenceEdges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "digest": "bc7d04ff"
+      },
+      "reset": "full snapshot matched"
+    },
+    {
+      "scene": 2,
+      "renderer": "webgl2",
+      "model": {
+        "type": "surface",
+        "frame": "tetrahedron",
+        "vertices": 201,
+        "triangles": 384,
+        "tripleEdges": 32,
+        "junctions": 1,
+        "initialArea": 8.5240525,
+        "area": 8.48528263,
+        "relaxationSteps": 600,
+        "lastMove": 0.0000112,
+        "digest": "b42c9c57"
+      },
+      "reset": "full snapshot matched"
+    },
+    {
+      "scene": 3,
+      "renderer": "webgl2",
+      "model": {
+        "type": "surface",
+        "frame": "tetrahedron",
+        "vertices": 201,
+        "triangles": 384,
+        "tripleEdges": 32,
+        "junctions": 1,
+        "initialArea": 8.5240525,
+        "area": 8.48528263,
+        "relaxationSteps": 600,
+        "lastMove": 0.0000112,
+        "digest": "b42c9c57"
+      },
+      "reset": "full snapshot matched"
+    }
+  ]
+}

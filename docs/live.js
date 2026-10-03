@@ -4,7 +4,7 @@
   const $ = id => document.getElementById(id), M = SoapModels;
   const scenes = [
     { beat: 'PREDICT', title: 'Can soap always find the shortest route?', prompt: 'Six pins. A film between two plates. Predict: will one dip find the shortest connected network?', side: 'Make your prediction.', copy: 'Surface tension pulls a film toward less area. Between parallel plates, that means a shorter network.', cue: 'Ask for a show of hands: always shortest, or can get stuck? Reveal one dip. Its junctions look balanced. That alone cannot tell us whether another network is shorter.' },
-    { beat: 'INTERVENE', title: 'Same pins. Another answer.', prompt: 'Keep every pin fixed. Change the starting network, then let the same solver settle.', side: 'Try the second dip.', copy: 'Different starting connections can lead to different settled networks. The pin positions and the numerical rule stay the same.', cue: 'Show the five-side competitor first. A shorter connected network disproves global optimality of the first result. Then try the second dip: it reaches the five-unit network. These two chosen seeds demonstrate possibility, not a success rate.' },
+    { beat: 'INTERVENE', title: 'Same pins. Another answer.', prompt: 'Keep every pin fixed. Change the starting network, then let the same solver settle.', side: 'Try the second dip.', copy: 'Different starting connections can lead to different settled networks. The pin positions and the numerical rule stay the same.', cue: 'Show the five-side competitor first. A shorter connected network disproves global optimality of the first result. Then try the second dip: the overlay clears so its five-edge network can be seen on its own. These two chosen seeds demonstrate possibility, not a success rate.' },
     { beat: 'REVEAL', title: 'The junctions have rules.', prompt: 'A tetrahedron frame. Predict: how many films share a line, and how many of those lines meet at a point?', side: 'Look inside the frame.', copy: 'Rotate the film, then reveal its triple lines and central junction. The sheets are translucent; the wire boundary is grey.', cue: 'Reveal the junctions. Bright lines mark three sheets meeting; the gold point marks four triple lines meeting. Name the 120-degree and tetrahedral-angle rules. The mesh connections were supplied to the numerical model; this is not a computational discovery of Taylor’s theorem.' },
     { beat: 'ESTABLISH', title: 'Local laws. No global oracle.', prompt: 'A new wire boundary changes the whole film. The allowed interior junction types stay the same.', side: 'What is established?', copy: 'Plateau’s junction laws have a mathematical foundation. The film on screen is an illustration of that result.', cue: 'State Taylor’s 1976 result for ideal films in three dimensions, away from the wire. Smooth sheet, Y, T. Switch frame to reconnect the theorem with the picture. End: energy can guide a system to a good answer without certifying the best answer.' }
   ];
@@ -75,7 +75,7 @@
     $('soap-dip').hidden = scene !== 1; $('soap-compare').hidden = scene !== 1;
     $('soap-highlight').hidden = scene !== 2; $('soap-frame').hidden = scene !== 3;
     $('soap-compare').setAttribute('aria-pressed', String(comparison)); $('soap-highlight').setAttribute('aria-pressed', String(highlighted));
-    setText('soap-compare', comparison ? 'Hide the competitor' : 'Show a shorter competitor');
+    setText('soap-compare', comparison ? 'Hide the comparison' : 'Compare five-side network');
     setText('soap-dip', dip === 0 ? 'Try a second dip' : 'Return to the first dip');
     setText('soap-highlight', highlighted ? 'Hide the junction marks' : 'Reveal the junctions');
     setText('soap-frame', kind === 'cube' ? 'Try a tetrahedron' : 'Try a cube');
@@ -87,7 +87,13 @@
         const length = M.network(dip).length();
         setText('metric-label', dip === 0 ? 'First dip · network length' : 'Second dip · network length');
         setText('metric-value', length.toFixed(3));
-        setText('metric-detail', comparison ? `Dashed competitor: ${M.referenceLength.toFixed(3)} · ${((length / M.referenceLength - 1) * 100).toFixed(2)}% longer` : 'Computed from all edges of this numerical network.');
+        const firstLength = M.network(0).length();
+        const difference = (a, b) => Math.abs(a - b) <= 1e-6
+          ? 'equal length within numerical tolerance'
+          : `${(Math.abs(a - b) / b * 100).toFixed(2)}% ${a > b ? 'longer' : 'shorter'}`;
+        const firstComparison = dip === 1 ? `First dip: ${firstLength.toFixed(3)}. This dip is ${difference(length, firstLength)}.` : '';
+        const referenceComparison = comparison ? `Five-side network: ${M.referenceLength.toFixed(3)}. ${Math.abs(length - M.referenceLength) <= 1e-6 ? 'The two networks have equal length within numerical tolerance.' : `This dip is ${difference(length, M.referenceLength)}.`}` : '';
+        setText('metric-detail', [firstComparison, referenceComparison].filter(Boolean).join(' ') || 'Computed from all edges of this numerical network.');
       }
       setText('visual-caption', comparison ? 'Mint: this dip. Pink dashes: five sides connecting all six pins.' : 'White: fixed pins. Mint: film walls. Gold: free junctions.');
       setText('consequence', scene === 0 ? (revealed ? 'A balanced-looking network. Can you find a shorter way to connect the same pins?' : 'Pause for the audience before revealing a result.') : (dip === 1 ? 'The second start reaches a shorter network. One settled answer is not a certificate of the best answer.' : comparison ? 'The dashed competitor is shorter. This first dip cannot be a global minimum.' : 'Before dipping again, reveal a competitor you can check by counting five unit edges.'));
@@ -111,7 +117,7 @@
   $('scene-next').addEventListener('click', () => resetScene(scene + 1));
   $('scene-reset').addEventListener('click', () => resetScene());
   $('soap-reveal').addEventListener('click', () => { revealed = true; update(); });
-  $('soap-dip').addEventListener('click', () => { dip = 1 - dip; update(); });
+  $('soap-dip').addEventListener('click', () => { dip = 1 - dip; comparison = false; update(); });
   $('soap-compare').addEventListener('click', () => { comparison = !comparison; update(); });
   $('soap-highlight').addEventListener('click', () => { highlighted = !highlighted; update(); });
   $('soap-frame').addEventListener('click', () => { kind = kind === 'cube' ? 'tetrahedron' : 'cube'; ready = false; loadFilm(); resetCamera(); update(); });
