@@ -1,0 +1,242 @@
+{
+  "status": "PASS",
+  "command": "unshare -rn taskset -c 11 node tests/live-browser-smoke.mjs",
+  "source": "/home/bluestar/lanes/presentations/soap-films/docs/live.html",
+  "networkRequests": [],
+  "errors": [],
+  "scenes": [
+    {
+      "scene": 0,
+      "renderer": "canvas2d",
+      "model": {
+        "type": "steiner",
+        "pins": [
+          [
+            1,
+            0
+          ],
+          [
+            0.5,
+            0.8660254
+          ],
+          [
+            -0.5,
+            0.8660254
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            -0.5,
+            -0.8660254
+          ],
+          [
+            0.5,
+            -0.8660254
+          ]
+        ],
+        "edges": [
+          [
+            6,
+            1
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            7,
+            6
+          ],
+          [
+            9,
+            7
+          ]
+        ],
+        "junctions": [
+          [
+            -9.8e-7,
+            0.57735027
+          ],
+          [
+            -0.00000116,
+            -8.3e-7
+          ],
+          [
+            0.49999948,
+            -0.28867603
+          ],
+          [
+            -0.49999994,
+            -0.28867523
+          ]
+        ],
+        "length": 5.19615242,
+        "referenceLength": 5,
+        "referenceEdges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "digest": "bc7d04ff"
+      },
+      "reset": "full snapshot matched"
+    },
+    {
+      "scene": 1,
+      "renderer": "canvas2d",
+      "model": {
+        "type": "steiner",
+        "pins": [
+          [
+            1,
+            0
+          ],
+          [
+            0.5,
+            0.8660254
+          ],
+          [
+            -0.5,
+            0.8660254
+          ],
+          [
+            -1,
+            0
+          ],
+          [
+            -0.5,
+            -0.8660254
+          ],
+          [
+            0.5,
+            -0.8660254
+          ]
+        ],
+        "edges": [
+          [
+            3,
+            2
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            4
+          ]
+        ],
+        "junctions": [],
+        "length": 5,
+        "referenceLength": 5,
+        "referenceEdges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        "digest": "9eb7e68d"
+      },
+      "reset": "full snapshot matched"
+    },
+    {
+      "scene": 2,
+      "renderer": "webgl2",
+      "model": {
+        "type": "surface",
+        "frame": "tetrahedron",
+        "vertices": 201,
+        "triangles": 384,
+        "tripleEdges": 32,
+        "junctions": 1,
+        "initialArea": 8.5240525,
+        "area": 8.48528263,
+        "relaxationSteps": 600,
+        "lastMove": 0.0000112,
+        "digest": "b42c9c57"
+      },
+      "reset": "full snapshot matched"
+    },
+    {
+      "scene": 3,
+      "renderer": "webgl2",
+      "model": {
+        "type": "surface",
+        "frame": "tetrahedron",
+        "vertices": 201,
+        "triangles": 384,
+        "tripleEdges": 32,
+        "junctions": 1,
+        "initialArea": 8.5240525,
+        "area": 8.48528263,
+        "relaxationSteps": 600,
+        "lastMove": 0.0000112,
+        "digest": "b42c9c57"
+      },
+      "reset": "full snapshot matched"
+    }
+  ]
+}

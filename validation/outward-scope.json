@@ -1,0 +1,14 @@
+{
+  "branch": "codex/oliver-live-soap",
+  "base_commit": "f774ba5835f6e6ae6c75067f4c1b09e6a55cc43c",
+  "tracked_workflows": [],
+  "pages_read_command": "gh api repos/BenKnill/soap-films/pages",
+  "pages": {
+    "status": "built",
+    "build_type": "legacy",
+    "source": {
+      "branch": "master",
+      "path": "/docs"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+Local Soap presentation validation
+2026-10-03T16:57:09.679571+00:00
+$ taskset -c 11 node tests/live-models.mjs
+{
+  "status": "PASS",
+  "firstLength": 5.196152422707622,
+  "secondLength": 5,
+  "referenceLength": 5,
+  "films": {
+    "tetrahedron": {
+      "vertices": 201,
+      "triangles": 384,
+      "tripleEdges": 32,
+      "junctions": 1,
+      "initialArea": 8.524052498978945,
+      "area": 8.485282634054201,
+      "digest": "b42c9c57"
+    },
+    "cube": {
+      "vertices": 705,
+      "triangles": 1408,
+      "tripleEdges": 96,
+      "junctions": 4,
+      "initialArea": 17.040255435388318,
+      "area": 16.96864202572169,
+      "digest": "dca6eca5"
+    }
+  }
+}
+exit=0
+$ node --check docs/live.js
+exit=0
+$ node --check docs/live-model.js
+exit=0
+Runtime script/style assets: all adjacent files exist; no remote dependencies.
+steiner.js unchanged; sha256=fa467cdbc8cdf2fd3a15c1189a5aff100e725ca164f4a048d4714b2460163573
+surface.js unchanged; sha256=5e60a98a4e4276dd6e2f7d43e6acd35a7c376d9dbb4a7e4fa1cb02e256c87041
+film3d.js unchanged; sha256=54d50df8e66556c58ae54d05d59baf531e18002f2a9c4d014114eddfe82702bd
+filmcolor.js unchanged; sha256=d7a2c5a32c198eb4716664bc4911966b9e53a6dad460ca57e567bef68343bd4c
+PASS: local geometry, source syntax, runtime dependencies, unchanged numerical/rendering engines.
+Not covered here: browser controls/rendered layout. The kit browser suite supplies that evidence.
