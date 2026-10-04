@@ -1,3 +1,6 @@
 node_modules
 blender/out/
 blender/*.json
+.venv/
+__pycache__/
+runs/

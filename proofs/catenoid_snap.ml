@@ -1,0 +1,122 @@
+(* Heavy already loads realanalysis and its transcendental library. *)
+needs "Multivariate/realanalysis.ml";;
+prioritize_real();;
+
+(* tanh in an exponential form; no new axiom or external numerical oracle. *)
+let soap_tanh = new_definition
+ `soap_tanh t = (exp(&2 * t) - &1) / (exp(&2 * t) + &1)`;;
+let soap_snap = new_definition
+ `soap_snap t = (t - &1) * exp(&2 * t) - (t + &1)`;;
+
+let SOAP_SNAP_EQUATION = prove
+ (`!t. t * soap_tanh t = &1 <=> soap_snap t = &0`,
+  GEN_TAC THEN REWRITE_TAC[soap_tanh; soap_snap] THEN
+  SUBGOAL_THEN `&0 < exp(&2 * t) + &1` ASSUME_TAC THENL
+   [MP_TAC(SPEC `&2 * t` REAL_EXP_POS_LT) THEN REAL_ARITH_TAC;
+    REWRITE_TAC[real_div; GSYM REAL_MUL_ASSOC] THEN
+    REWRITE_TAC[GSYM real_div] THEN
+    ASM_SIMP_TAC[REAL_EQ_LDIV_EQ] THEN REAL_ARITH_TAC]);;
+
+(* Kernel-checked Taylor remainder at the two rational endpoints. The same
+   exponential appears in the remainder, so linear arithmetic bounds it
+   without importing the incompatible legacy Library/calc_real.ml. *)
+let SOAP_SNAP_LOWER_SIGN = prove
+ (`soap_snap (&11996786402 / &10000000000) < &0`,
+  MP_TAC(ISPECL [`24`; `Cx(&23993572804 / &10000000000)`] TAYLOR_CEXP) THEN
+  SIMP_TAC[RE_CX; GSYM CX_EXP; GSYM CX_DIV; GSYM CX_SUB;
+           COMPLEX_NORM_CX] THEN
+  CONV_TAC(ONCE_DEPTH_CONV EXPAND_VSUM_CONV) THEN
+  REWRITE_TAC[GSYM CX_POW; GSYM CX_DIV; GSYM CX_ADD;
+             GSYM CX_SUB; COMPLEX_NORM_CX; soap_snap] THEN
+  CONV_TAC NUM_REDUCE_CONV THEN CONV_TAC REAL_RAT_REDUCE_CONV THEN
+  REAL_ARITH_TAC);;
+
+let SOAP_SNAP_UPPER_SIGN = prove
+ (`&0 < soap_snap (&11996786403 / &10000000000)`,
+  MP_TAC(ISPECL [`24`; `Cx(&23993572806 / &10000000000)`] TAYLOR_CEXP) THEN
+  SIMP_TAC[RE_CX; GSYM CX_EXP; GSYM CX_DIV; GSYM CX_SUB;
+           COMPLEX_NORM_CX] THEN
+  CONV_TAC(ONCE_DEPTH_CONV EXPAND_VSUM_CONV) THEN
+  REWRITE_TAC[GSYM CX_POW; GSYM CX_DIV; GSYM CX_ADD;
+             GSYM CX_SUB; COMPLEX_NORM_CX; soap_snap] THEN
+  CONV_TAC NUM_REDUCE_CONV THEN CONV_TAC REAL_RAT_REDUCE_CONV THEN
+  REAL_ARITH_TAC);;
+
+let SOAP_SNAP_CONTINUOUS = prove
+ (`!s. soap_snap real_continuous_on s`,
+  GEN_TAC THEN GEN_REWRITE_TAC LAND_CONV [GSYM ETA_AX] THEN
+  REWRITE_TAC[soap_snap] THEN
+  MATCH_MP_TAC REAL_CONTINUOUS_ON_SUB THEN CONJ_TAC THENL
+   [MATCH_MP_TAC REAL_CONTINUOUS_ON_MUL THEN CONJ_TAC THENL
+     [MATCH_MP_TAC REAL_CONTINUOUS_ON_SUB THEN
+      REWRITE_TAC[REAL_CONTINUOUS_ON_ID; REAL_CONTINUOUS_ON_CONST];
+      GEN_REWRITE_TAC LAND_CONV [GSYM o_DEF] THEN
+      MATCH_MP_TAC REAL_CONTINUOUS_ON_COMPOSE THEN
+      SIMP_TAC[REAL_CONTINUOUS_ON_LMUL; REAL_CONTINUOUS_ON_ID;
+               REAL_CONTINUOUS_ON_EXP]];
+    MATCH_MP_TAC REAL_CONTINUOUS_ON_ADD THEN
+    REWRITE_TAC[REAL_CONTINUOUS_ON_ID; REAL_CONTINUOUS_ON_CONST]]);;
+
+let SOAP_SNAP_INCREASING = prove
+ (`!x y. &1 <= x /\ x < y ==> soap_snap x < soap_snap y`,
+  REPEAT STRIP_TAC THEN
+  SUBGOAL_THEN `&1 < exp(&2 * x)` ASSUME_TAC THENL
+   [MATCH_MP_TAC REAL_EXP_LT_1 THEN ASM_REAL_ARITH_TAC; ALL_TAC] THEN
+  SUBGOAL_THEN `exp(&2 * x) < exp(&2 * y)` ASSUME_TAC THENL
+   [REWRITE_TAC[REAL_EXP_MONO_LT] THEN ASM_REAL_ARITH_TAC; ALL_TAC] THEN
+  MP_TAC(SPECL [`y - x`; `exp(&2 * x) - &1`] REAL_LT_MUL) THEN
+  MP_TAC(SPECL [`y - &1`; `exp(&2 * y) - exp(&2 * x)`]
+              REAL_LT_MUL) THEN
+  ASM_REWRITE_TAC[REAL_SUB_LT] THEN
+  REWRITE_TAC[soap_snap] THEN ASM_REAL_ARITH_TAC);;
+
+let SOAP_SNAP_SMALL = prove
+ (`!t. &0 < t /\ t <= &1 ==> soap_snap t < &0`,
+  REPEAT STRIP_TAC THEN REWRITE_TAC[soap_snap] THEN
+  SUBGOAL_THEN `&0 <= (&1 - t) * exp(&2 * t)` ASSUME_TAC THENL
+   [MATCH_MP_TAC REAL_LE_MUL THEN
+    ASM_SIMP_TAC[REAL_EXP_POS_LE] THEN ASM_REAL_ARITH_TAC;
+    ASM_REAL_ARITH_TAC]);;
+
+let CATENOID_SNAP_ENCLOSURE = prove
+ (`(?t. &11996786402 / &10000000000 < t /\
+         t < &11996786403 / &10000000000 /\ t * soap_tanh t = &1) /\
+   (!t. &0 < t /\ t * soap_tanh t = &1
+        ==> &11996786402 / &10000000000 < t /\
+            t < &11996786403 / &10000000000)`,
+  REWRITE_TAC[SOAP_SNAP_EQUATION] THEN CONJ_TAC THENL
+   [MP_TAC(ISPECL [`soap_snap`; `&11996786402 / &10000000000`;
+                  `&11996786403 / &10000000000`; `&0`]
+                 REAL_IVT_INCREASING) THEN
+    SIMP_TAC[SOAP_SNAP_CONTINUOUS;
+             REAL_LT_IMP_LE; SOAP_SNAP_LOWER_SIGN; SOAP_SNAP_UPPER_SIGN] THEN
+    CONV_TAC REAL_RAT_REDUCE_CONV THEN
+    REWRITE_TAC[IN_REAL_INTERVAL] THEN
+    MESON_TAC[SOAP_SNAP_LOWER_SIGN; SOAP_SNAP_UPPER_SIGN; REAL_LT_LE];
+    X_GEN_TAC `t:real` THEN STRIP_TAC THEN
+    SUBGOAL_THEN `&1 < t` ASSUME_TAC THENL
+     [ASM_MESON_TAC[SOAP_SNAP_SMALL; REAL_NOT_LT; REAL_LT_REFL]; ALL_TAC] THEN
+    CONJ_TAC THENL
+     [ASM_CASES_TAC `t < &11996786402 / &10000000000` THENL
+       [MP_TAC(SPECL [`t:real`; `&11996786402 / &10000000000`]
+                    SOAP_SNAP_INCREASING) THEN
+        ASM_SIMP_TAC[REAL_LT_IMP_LE] THEN
+        MP_TAC SOAP_SNAP_LOWER_SIGN THEN REAL_ARITH_TAC;
+        ASM_MESON_TAC[SOAP_SNAP_LOWER_SIGN; REAL_LT_LE; REAL_LE_TOTAL]];
+      ASM_CASES_TAC `&11996786403 / &10000000000 < t` THENL
+       [MP_TAC(SPECL [`&11996786403 / &10000000000`; `t:real`]
+                    SOAP_SNAP_INCREASING) THEN
+        CONV_TAC REAL_RAT_REDUCE_CONV THEN ASM_REWRITE_TAC[] THEN
+        MP_TAC SOAP_SNAP_UPPER_SIGN THEN REAL_ARITH_TAC;
+        ASM_MESON_TAC[SOAP_SNAP_UPPER_SIGN; REAL_LT_LE; REAL_LE_TOTAL]]]]);;
+
+let CATENOID_SNAP_UNIQUE = prove
+ (`!x y. &0 < x /\ &0 < y /\
+          x * soap_tanh x = &1 /\ y * soap_tanh y = &1 ==> x = y`,
+  REWRITE_TAC[SOAP_SNAP_EQUATION] THEN REPEAT STRIP_TAC THEN
+  SUBGOAL_THEN `&1 < x /\ &1 < y` STRIP_ASSUME_TAC THENL
+   [ASM_MESON_TAC[SOAP_SNAP_SMALL; REAL_NOT_LT; REAL_LT_REFL];
+    ASM_MESON_TAC[SOAP_SNAP_INCREASING; REAL_LT_IMP_LE; REAL_LT_TOTAL;
+                 REAL_LT_REFL]]);;
+
+print_endline "CATENOID SNAP: 1.1996786402 < t < 1.1996786403 (unique positive root of t*tanh(t)=1)";;
