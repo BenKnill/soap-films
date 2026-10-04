@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { polygon, rng, wilson, validTree, settle, cell } from './success.mjs';
+import { polygon, rng, wilson, pairedComparison, validTree, settle, cell } from './success.mjs';
 
 const fixtures = [
   { pins: polygon(3), expected: 3, count: 1 },
@@ -29,7 +29,14 @@ for (let i = 0; i < fixtures.length; i++) {
 }
 assert.ok(wilson(0, 1000)[1] < 0.004);
 assert.ok(wilson(1000, 1000)[0] > 0.996);
+const paired = pairedComparison([false, true, false, true], [true, false, true, true]);
+assert.equal(paired.gained, 2);
+assert.equal(paired.lost, 1);
+assert.equal(paired.difference, 0.25);
+assert.ok(paired.ci[0] < paired.difference && paired.difference < paired.ci[1]);
+const tied = pairedComparison(Array(1000).fill(true), Array(1000).fill(true));
+assert.ok(tied.ci[0] < 0 && tied.ci[1] > 0);
 assert.deepEqual(cell({ n: 3, shake: 0.15, dips: 10, reference: references[0] }),
   cell({ n: 3, shake: 0.15, dips: 10, reference: references[0] }));
 assert.equal(settle(Steiner.Network(polygon(3), rng(42)).dip(), 0).converged, false);
-console.log('PASS: independent optimum fixtures, degeneracy, topology counts, tree validity, seeded reproducibility, Wilson boundaries and iteration cap');
+console.log('PASS: independent optimum fixtures, degeneracy, topology counts, tree validity, seeded reproducibility, marginal and paired Wilson intervals, and iteration cap');

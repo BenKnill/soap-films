@@ -27,6 +27,21 @@ Knee = largest adjacent decrease in success rate over the sampled pin counts.
 - Shake 0.15: n=5→6, drop 49.0 percentage points; non-overlapping marginal intervals.
 - Shake 0.5: n=5→6, drop 49.1 percentage points; non-overlapping marginal intervals.
 
+Paired shake effects versus the same initial dips without shaking; conservative approximate 95% intervals from Bonferroni-combined 97.5% Wilson intervals for gained/lost success probabilities.
+
+| n | shake | gained | lost | change in success, percentage points (95% CI) |
+|---|---|---|---|---|
+| 3 | 0.15 | 0 | 0 | 0.0 (-0.5–0.5) |
+| 3 | 0.5 | 0 | 0 | 0.0 (-0.5–0.5) |
+| 4 | 0.15 | 0 | 0 | 0.0 (-0.5–0.5) |
+| 4 | 0.5 | 0 | 0 | 0.0 (-0.5–0.5) |
+| 5 | 0.15 | 0 | 0 | 0.0 (-0.5–0.5) |
+| 5 | 0.5 | 0 | 0 | 0.0 (-0.5–0.5) |
+| 6 | 0.15 | 4 | 0 | 0.4 (-0.4–1.2) |
+| 6 | 0.5 | 3 | 0 | 0.3 (-0.4–1.0) |
+| 7 | 0.15 | 0 | 16 | -1.6 (-2.8–-0.4) |
+| 7 | 0.5 | 4 | 19 | -1.5 (-3.0–0.0) |
+
 | n | exhaustive topologies | optimum lower | optimum upper |
 |---|---|---|---|
 | 3 | 1 | 2.9999999989 | 3.0000000000 |

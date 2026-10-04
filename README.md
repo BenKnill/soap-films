@@ -34,7 +34,9 @@ Four workers share the cores with other lanes. Each cell has 1,000 independently
 seeded dips into the **same** unit-circumradius regular polygon. Initial dips
 are paired across shake amplitudes 0, 0.15 and 0.5; confidence intervals describe
 the dip distribution within each cell, not independent differences between
-paired cells. The simulator's initial random topology distribution is retained,
+paired cells. The table also reports gained and lost successes on these paired
+dips, with conservative approximate 95% difference intervals formed from two
+97.5% Wilson intervals using Bonferroni. The simulator's initial random topology distribution is retained,
 including its existing random-sort pin ordering; it is not uniform over trees.
 Each dip relaxes for at most 4,000 iterations, takes one shake (uniform x/y
 junction displacements in ±amplitude/2), then relaxes for at most another 4,000.
