@@ -1,48 +1,45 @@
-# soap-steiner — 2026-10-04
+# soap-steiner — complete, 2026-10-04
 
-- PASS — `node tools/success.mjs --grid` — `PASS: 15 cells × 1000 dips; table results/success-grid.md; knees 0:5→6, 0.15:5→6, 0.5:5→6` (systemd journal, soap-steiner-grid, 22:50:00 UTC). Includes paired shake effects and their intervals.
-- FAIL — `hearth prove proofs/catenoid_snap.ml --profile heavy` — NOT RUN: heavy is still being built; `HOL_WORKBENCH_RUNTIME_CONFIG=/home/bluestar/hearth/runtime.toml /home/bluestar/src/hol-hearth/hearth doctor --profile heavy` reports `DOCTOR: blocked`, `PROFILES: blocked (heavy)`. Confirmed live `hearth-profile-heavy.service`, PID 83807; build reached 2360s at 23:00:27 UTC; HOL child PID 83859 is CPU-active at 102%. This is a verified wait, not a Ben-only blocker. The independent algebraic component has now passed on light.
-- PASS — `test -s EPISODE-4.md && wc -w EPISODE-4.md` — one-page working outline exists, 514 words, with measured beats and exactly three shot descriptions. Manually checked against results/success-grid.md; the catenoid proof line is explicitly a draft pending replay.
+- PASS — `node tools/success.mjs --grid` — `PASS: 15 cells × 1000 dips; table results/success-grid.md; knees 0:5→6, 0.15:5→6, 0.5:5→6` (soap-steiner-grid journal, 22:50:00 UTC). Table contains marginal confidence intervals, paired shake-effect intervals and exhaustive optimum brackets.
+- PASS — `hearth prove proofs/catenoid_snap.ml --profile heavy --timeout 180 --run-root runs/acceptance` — `PASSED catenoid_snap.ml: 2/2 bindings proved, 0 new axioms, eval 38.4s (heavy)` (23:14:19 UTC). Decimal output: `CATENOID SNAP: 1.1996786402 < t < 1.1996786403 (unique positive root of t*tanh(t)=1)`.
+- PASS — `test -s EPISODE-4.md && wc -w EPISODE-4.md` — `515 EPISODE-4.md`; one-page outline contains the measured beats and exactly three shot descriptions, now including the certified root. Manually checked its numbers and limitations against the generated table and theorem.
 
-Changed: cloned the empty lane checkout (remote default is master, not main), created
-codex/steiner-rate, imported the existing browser simulation unchanged, added the
-headless command, exhaustive SOCP reference, local tests, measured table, protocol
-README and episode outline. `node tools/success.test.mjs` reports `PASS: independent
-optimum fixtures, degeneracy, topology counts, tree validity, seeded reproducibility,
-marginal and paired Wilson intervals, and iteration cap`. Smoke also passes. No CI used.
-Continuation: made the continuity composition explicit in the proof draft;
-shortened the outline; moved progress to stderr; added and tested paired shake
-effects so inference does not depend on overlapping marginal intervals alone.
-The full grid reran after this statistical output change and reproduced every rate.
-Proof progress: factored five algebraic and ordering lemmas into proofs/snap_algebra.ml.
-The first light-profile replay exposed a division-normalization error; repaired it
-with a conditional field theorem. `hearth prove proofs/snap_algebra.ml --profile
-light --timeout 180 --run-root runs/algebra` then returned `PASSED snap_algebra.ml:
-5/5 bindings proved, 0 new axioms, eval 6.8s (light)`. Inspection confirms exact
-source conclusions and empty hypotheses for all five lemmas. Receipt:
-runs/algebra/20261004T225806Z-131033-snap_algebra-9d9fe2/transcript.log.json.
-The main catenoid source now imports the checked algebra and ordering; its heavy replay is pending.
+Results: the largest sampled drop is 5→6 pins. Unshaken hexagon success is
+50.6% (95% Wilson interval 47.5–53.7%); the two shake amplitudes give 51.0% and
+50.9%. Paired gains of 4 and 3 successes per 1,000 have effect intervals including
+zero. Seven pins recover to 57.7% without shaking. These are simulated networks
+on regular polygons, not real-film measurements or a universal pin-count law.
+Unresolved runs count as failures and are separately reported.
 
-Decisions: regular unit-radius polygons n=3…7; one shake at amplitudes 0, 0.15,
-0.5; four workers; paired initial dips; success within 0.01% with convergence
-and connectivity required. Exact topology enumeration includes collapsed edges;
-numerical primal/dual gaps are under 1e-7, not HOL-certified. No claim about
-real-film success rates or a universal pin-count threshold. A single shake
-does not clearly help this measured protocol. Native K-backed Linux storage
-used for the small environment, generated tables and proof run directory.
+Implemented: headless use of the unchanged browser simulation, four workers,
+seeded paired dips, exhaustive full-topology SOCP enumeration including collapsed
+edges, primal/dual reference brackets, local tests, generated grid, catenoid HOL
+proof, documented local commands, and a measured episode outline. The Steiner
+reference is exhaustive numerical optimization with gaps below 1e-7; only the
+catenoid constant is HOL-certified. Ben can edit the episode framing; no Ben-only
+step is required for these completion checks.
 
-Checkpoint: ebf2796 pushed to origin/codex/steiner-rate; catenoid source is explicitly
-an unvalidated draft. Shared missing-playbook and heavy-provisioning findings
-were deduplicated with `+1 soap-steiner` in ~/lanes/FINDINGS.md.
+Local evidence: `node tools/success.test.mjs` passed the independent triangle,
+square, obtuse-triangle and hexagon optima, topology counts, tree validity,
+reproducibility, marginal/paired intervals and iteration cap. `snap_algebra.ml`
+passed 5/5 bindings on light; `snap_bounds.ml` passed 6/6 on heavy; both added zero
+axioms. The final acceptance used no project basis, checked the complete source
+and imports, and matched both quoted theorem conclusions with empty hypotheses.
+Receipt: runs/acceptance/20261004T231338Z-146738-catenoid_snap-5196b2/transcript.log.json.
+Its source/dependency identities match the final proof files. No unchanged proof
+was rerun for status, and no CI or cold replay was used.
 
-Next: wait for the confirmed live shared heavy-profile build, run the small
-catenoid proof leaf, fix any proof errors, then perform one full warm acceptance
-with zero new axioms. Replace the draft catenoid status with that command's
-verdict and decimal enclosure; push tested checkpoints to this lane's branch.
-Previous goal turn: verified wait on a confirmed live heavy build. Latest continuation: verified wait after a 60-second interval on the same
-live build handle; no unchanged proof was rerun.
-The complete enclosure has not yet been replayed.
+Operational decisions: long jobs use ~/lanes/bin/lane-run. Repo tools/hearth sets
+this machine's runtime environment inside the executable and delegates to the
+shared installation, preserving KillMode=process. The modern library's open_in
+name collision in Hearth basis capture is worked around locally by restoring
+Stdlib.open_in after the bounds proof; no shared tool was changed. Both launcher
+and capture friction are recorded in ~/lanes/FINDINGS.md. The temporary authoring
+basis f87ce4a36b5d was retired; this lane has no retained basis or running job.
+Small sources, tables, environment and proof receipts use the K-backed Linux
+filesystem; storage was checked before basis capture.
 
-Coordinator update adopted: long jobs now use ~/lanes/bin/lane-run. Updated the
-README's grid launcher and documented the durable catenoid launcher. The existing
-shared profile build is left running; no change to its command or process was made.
+Previous goal turn: verified wait on the live heavy-profile build. Final turn:
+progress—heavy became healthy, the explicit IVT witness and local basis workaround
+were checked, full warm acceptance passed, and the completion audit matched each
+Done-when requirement. All work is on codex/steiner-rate; no required work remains.

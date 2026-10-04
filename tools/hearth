@@ -1,0 +1,5 @@
+#!/bin/sh
+# Project launcher for the shared bluestar26 runtime, including transient units.
+set -eu
+export HOL_WORKBENCH_RUNTIME_CONFIG="${HOL_WORKBENCH_RUNTIME_CONFIG:-/home/bluestar/hearth/runtime.toml}"
+exec /home/bluestar/src/hol-hearth/hearth "$@"

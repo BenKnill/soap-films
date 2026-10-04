@@ -30,8 +30,8 @@ are 5→6. This is not a test of every annealing schedule; the intervals describ
 dip randomness, not model accuracy. Pin count also changes polygon geometry.
 
 **4:40–6:20 — One smooth dial.** Separate two rings holding a catenoid.
-Its stationary branch folds where **t·tanh(t)=1**, t=h/(2a). The HOL proof targets
-the unique positive root in **(1.1996786402, 1.1996786403)**; replay is pending.
+Its stationary branch folds where **t·tanh(t)=1**, t=h/(2a). The HOL proof encloses
+the unique positive root in **(1.1996786402, 1.1996786403)** with zero new axioms.
 Show the separate numerical mapping h/R≈1.325487, then the existing collapse
 animation. Certifying this root does not certify fluid dynamics or the complete
 stability theorem. A retained shape and a global optimum are different questions.

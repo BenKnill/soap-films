@@ -78,7 +78,7 @@ a universal failure threshold, and a single shake need not improve success.
 Use the shared Hearth installation and heavy profile without rebuilding it:
 
 ```sh
-export PATH=/home/bluestar/src/hol-hearth:$PATH
+export PATH="$PWD/tools:$PATH"
 export HOL_WORKBENCH_RUNTIME_CONFIG=/home/bluestar/hearth/runtime.toml
 hearth prove proofs/catenoid_snap.ml --profile heavy --timeout 900 \
   --run-root /home/bluestar/lanes/soap-steiner/runs/catenoid
@@ -86,16 +86,23 @@ hearth inspect /home/bluestar/lanes/soap-steiner/runs/catenoid \
   --binding CATENOID_SNAP_ENCLOSURE
 ```
 
-For a durable proof job, after the same PATH and runtime exports:
+For a durable proof job:
 
 ```sh
-~/lanes/bin/lane-run soap-steiner-catenoid hearth prove proofs/catenoid_snap.ml \
+~/lanes/bin/lane-run soap-steiner-catenoid "$PWD/tools/hearth" \
+  prove proofs/catenoid_snap.ml \
   --profile heavy --timeout 900 \
   --run-root /home/bluestar/lanes/soap-steiner/runs/catenoid
 ```
 
-`lane-run` starts in the current directory and preserves Hearth's own basis
-lifecycle; use it for long jobs instead of calling `systemd-run` directly.
+`tools/hearth` selects the shared runtime inside the executable, including in
+transient units where caller exports are not inherited. It delegates to the
+shared installation without modifying it. Its basename makes `lane-run` select
+`KillMode=process`, preserving Hearth's basis lifecycle. Use `lane-run` for long
+jobs instead of calling `systemd-run` directly. During authoring, add
+`--basis proofs/snap_bounds.ml` to reuse the checked exponential bounds; list
+bases with `hearth basis` and retire this lane's key with
+`hearth basis retire KEY` when the proof work is finished.
 
 The proof uses the modern multivariate exponential's kernel-checked Taylor
 remainder at rational endpoints, continuity and the intermediate value theorem.
