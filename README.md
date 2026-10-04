@@ -89,6 +89,13 @@ hearth inspect /home/bluestar/lanes/soap-steiner/runs/catenoid \
 
 The proof uses the modern multivariate exponential's kernel-checked Taylor
 remainder at rational endpoints, continuity and the intermediate value theorem.
+Its algebraic component can be checked independently while heavy is provisioning:
+
+```sh
+hearth prove proofs/snap_algebra.ml --profile light --timeout 180 \
+  --run-root /home/bluestar/lanes/soap-steiner/runs/algebra
+```
+
 It encloses the unique positive root of `t*tanh(t)=1` in
 **(1.1996786402, 1.1996786403)**. `soap_tanh` explicitly defines tanh using
 `(exp(2t)−1)/(exp(2t)+1)`; no numerical result is asserted as an axiom.

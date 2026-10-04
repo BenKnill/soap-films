@@ -1,5 +1,6 @@
 (* Heavy already loads realanalysis and its transcendental library. *)
 needs "Multivariate/realanalysis.ml";;
+needs "proofs/snap_algebra.ml";;
 prioritize_real();;
 
 (* tanh in an exponential form; no new axiom or external numerical oracle. *)
@@ -11,11 +12,8 @@ let soap_snap = new_definition
 let SOAP_SNAP_EQUATION = prove
  (`!t. t * soap_tanh t = &1 <=> soap_snap t = &0`,
   GEN_TAC THEN REWRITE_TAC[soap_tanh; soap_snap] THEN
-  SUBGOAL_THEN `&0 < exp(&2 * t) + &1` ASSUME_TAC THENL
-   [MP_TAC(SPEC `&2 * t` REAL_EXP_POS_LT) THEN REAL_ARITH_TAC;
-    REWRITE_TAC[real_div; GSYM REAL_MUL_ASSOC] THEN
-    REWRITE_TAC[GSYM real_div] THEN
-    ASM_SIMP_TAC[REAL_EQ_LDIV_EQ] THEN REAL_ARITH_TAC]);;
+  MATCH_MP_TAC SOAP_SNAP_ALGEBRA THEN
+  MP_TAC(SPEC `&2 * t` REAL_EXP_POS_LT) THEN REAL_ARITH_TAC);;
 
 (* Kernel-checked Taylor remainder at the two rational endpoints. The same
    exponential appears in the remainder, so linear arithmetic bounds it
@@ -61,24 +59,17 @@ let SOAP_SNAP_CONTINUOUS = prove
 
 let SOAP_SNAP_INCREASING = prove
  (`!x y. &1 <= x /\ x < y ==> soap_snap x < soap_snap y`,
-  REPEAT STRIP_TAC THEN
-  SUBGOAL_THEN `&1 < exp(&2 * x)` ASSUME_TAC THENL
-   [MATCH_MP_TAC REAL_EXP_LT_1 THEN ASM_REAL_ARITH_TAC; ALL_TAC] THEN
-  SUBGOAL_THEN `exp(&2 * x) < exp(&2 * y)` ASSUME_TAC THENL
-   [REWRITE_TAC[REAL_EXP_MONO_LT] THEN ASM_REAL_ARITH_TAC; ALL_TAC] THEN
-  MP_TAC(SPECL [`y - x`; `exp(&2 * x) - &1`] REAL_LT_MUL) THEN
-  MP_TAC(SPECL [`y - &1`; `exp(&2 * y) - exp(&2 * x)`]
-              REAL_LT_MUL) THEN
-  ASM_REWRITE_TAC[REAL_SUB_LT] THEN
-  REWRITE_TAC[soap_snap] THEN ASM_REAL_ARITH_TAC);;
+  REPEAT STRIP_TAC THEN REWRITE_TAC[soap_snap] THEN
+  MATCH_MP_TAC SOAP_SNAP_MONOTONE_ALGEBRA THEN
+  ASM_REWRITE_TAC[] THEN CONJ_TAC THENL
+   [MATCH_MP_TAC REAL_EXP_LT_1 THEN ASM_REAL_ARITH_TAC;
+    REWRITE_TAC[REAL_EXP_MONO_LT] THEN ASM_REAL_ARITH_TAC]);;
 
 let SOAP_SNAP_SMALL = prove
  (`!t. &0 < t /\ t <= &1 ==> soap_snap t < &0`,
   REPEAT STRIP_TAC THEN REWRITE_TAC[soap_snap] THEN
-  SUBGOAL_THEN `&0 <= (&1 - t) * exp(&2 * t)` ASSUME_TAC THENL
-   [MATCH_MP_TAC REAL_LE_MUL THEN
-    ASM_SIMP_TAC[REAL_EXP_POS_LE] THEN ASM_REAL_ARITH_TAC;
-    ASM_REAL_ARITH_TAC]);;
+  MATCH_MP_TAC SOAP_SNAP_SMALL_ALGEBRA THEN
+  ASM_REWRITE_TAC[REAL_EXP_POS_LE]);;
 
 let CATENOID_SNAP_ENCLOSURE = prove
  (`(?t. &11996786402 / &10000000000 < t /\
