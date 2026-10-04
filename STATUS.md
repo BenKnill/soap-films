@@ -1,7 +1,7 @@
 # soap-steiner — 2026-10-04
 
 - PASS — `node tools/success.mjs --grid` — `PASS: 15 cells × 1000 dips; table results/success-grid.md; knees 0:5→6, 0.15:5→6, 0.5:5→6` (systemd journal, soap-steiner-grid, 22:50:00 UTC). Includes paired shake effects and their intervals.
-- FAIL — `hearth prove proofs/catenoid_snap.ml --profile heavy` — NOT RUN: heavy is still being built; `HOL_WORKBENCH_RUNTIME_CONFIG=/home/bluestar/hearth/runtime.toml /home/bluestar/src/hol-hearth/hearth doctor --profile heavy` reports `DOCTOR: blocked`, `PROFILES: blocked (heavy)`. Confirmed live `hearth-profile-heavy.service`, PID 83807; build reached 2260s at 22:58:45 UTC. This is a verified wait, not a Ben-only blocker. The independent algebraic component has now passed on light.
+- FAIL — `hearth prove proofs/catenoid_snap.ml --profile heavy` — NOT RUN: heavy is still being built; `HOL_WORKBENCH_RUNTIME_CONFIG=/home/bluestar/hearth/runtime.toml /home/bluestar/src/hol-hearth/hearth doctor --profile heavy` reports `DOCTOR: blocked`, `PROFILES: blocked (heavy)`. Confirmed live `hearth-profile-heavy.service`, PID 83807; build reached 2360s at 23:00:27 UTC; HOL child PID 83859 is CPU-active at 102%. This is a verified wait, not a Ben-only blocker. The independent algebraic component has now passed on light.
 - PASS — `test -s EPISODE-4.md && wc -w EPISODE-4.md` — one-page working outline exists, 514 words, with measured beats and exactly three shot descriptions. Manually checked against results/success-grid.md; the catenoid proof line is explicitly a draft pending replay.
 
 Changed: cloned the empty lane checkout (remote default is master, not main), created
@@ -39,6 +39,10 @@ Next: wait for the confirmed live shared heavy-profile build, run the small
 catenoid proof leaf, fix any proof errors, then perform one full warm acceptance
 with zero new axioms. Replace the draft catenoid status with that command's
 verdict and decimal enclosure; push tested checkpoints to this lane's branch.
-Previous goal turn: verified wait on a confirmed live heavy build. This turn:
-progress (proved root exclusion and uniqueness as ordering lemmas) and a verified wait on heavy.
+Previous goal turn: verified wait on a confirmed live heavy build. Latest continuation: verified wait after a 60-second interval on the same
+live build handle; no unchanged proof was rerun.
 The complete enclosure has not yet been replayed.
+
+Coordinator update adopted: long jobs now use ~/lanes/bin/lane-run. Updated the
+README's grid launcher and documented the durable catenoid launcher. The existing
+shared profile build is left running; no change to its command or process was made.

@@ -24,8 +24,7 @@ with a verdict, Wilson 95% intervals and an explicitly defined knee. For a
 durable full run on this shared machine:
 
 ```sh
-systemd-run --user --unit=soap-steiner-grid --collect \
-  --working-directory="$PWD" "$(command -v node)" tools/success.mjs --grid
+~/lanes/bin/lane-run soap-steiner-grid "$(command -v node)" tools/success.mjs --grid
 systemctl --user is-active soap-steiner-grid
 journalctl --user -u soap-steiner-grid -n 20 --no-pager
 ```
@@ -86,6 +85,17 @@ hearth prove proofs/catenoid_snap.ml --profile heavy --timeout 900 \
 hearth inspect /home/bluestar/lanes/soap-steiner/runs/catenoid \
   --binding CATENOID_SNAP_ENCLOSURE
 ```
+
+For a durable proof job, after the same PATH and runtime exports:
+
+```sh
+~/lanes/bin/lane-run soap-steiner-catenoid hearth prove proofs/catenoid_snap.ml \
+  --profile heavy --timeout 900 \
+  --run-root /home/bluestar/lanes/soap-steiner/runs/catenoid
+```
+
+`lane-run` starts in the current directory and preserves Hearth's own basis
+lifecycle; use it for long jobs instead of calling `systemd-run` directly.
 
 The proof uses the modern multivariate exponential's kernel-checked Taylor
 remainder at rational endpoints, continuity and the intermediate value theorem.
