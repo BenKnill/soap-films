@@ -1,7 +1,7 @@
 # soap-steiner — 2026-10-04
 
 - PASS — `node tools/success.mjs --grid` — `PASS: 15 cells × 1000 dips; table results/success-grid.md; knees 0:5→6, 0.15:5→6, 0.5:5→6` (systemd journal, soap-steiner-grid, 22:50:00 UTC). Includes paired shake effects and their intervals.
-- FAIL — `hearth prove proofs/catenoid_snap.ml --profile heavy` — NOT RUN: heavy is still being built; `HOL_WORKBENCH_RUNTIME_CONFIG=/home/bluestar/hearth/runtime.toml /home/bluestar/src/hol-hearth/hearth doctor --profile heavy` reports `DOCTOR: blocked`, `PROFILES: blocked (heavy)`. Confirmed live `hearth-profile-heavy.service`, PID 83807; build reached 2060s at 22:55:20 UTC. This is a verified wait, not a Ben-only blocker. The independent algebraic component has now passed on light.
+- FAIL — `hearth prove proofs/catenoid_snap.ml --profile heavy` — NOT RUN: heavy is still being built; `HOL_WORKBENCH_RUNTIME_CONFIG=/home/bluestar/hearth/runtime.toml /home/bluestar/src/hol-hearth/hearth doctor --profile heavy` reports `DOCTOR: blocked`, `PROFILES: blocked (heavy)`. Confirmed live `hearth-profile-heavy.service`, PID 83807; build reached 2260s at 22:58:45 UTC. This is a verified wait, not a Ben-only blocker. The independent algebraic component has now passed on light.
 - PASS — `test -s EPISODE-4.md && wc -w EPISODE-4.md` — one-page working outline exists, 514 words, with measured beats and exactly three shot descriptions. Manually checked against results/success-grid.md; the catenoid proof line is explicitly a draft pending replay.
 
 Changed: cloned the empty lane checkout (remote default is master, not main), created
@@ -14,14 +14,14 @@ Continuation: made the continuity composition explicit in the proof draft;
 shortened the outline; moved progress to stderr; added and tested paired shake
 effects so inference does not depend on overlapping marginal intervals alone.
 The full grid reran after this statistical output change and reproduced every rate.
-Proof progress: factored three algebraic lemmas into proofs/snap_algebra.ml.
+Proof progress: factored five algebraic and ordering lemmas into proofs/snap_algebra.ml.
 The first light-profile replay exposed a division-normalization error; repaired it
 with a conditional field theorem. `hearth prove proofs/snap_algebra.ml --profile
 light --timeout 180 --run-root runs/algebra` then returned `PASSED snap_algebra.ml:
-3/3 bindings proved, 0 new axioms, eval 0.6s (light)`. Inspection confirms exact
-source conclusions and empty hypotheses for all three lemmas. Receipt:
-runs/algebra/20261004T225450Z-125158-snap_algebra-b5707b/transcript.log.json.
-The main catenoid source now imports this checked algebra; its heavy replay is pending.
+5/5 bindings proved, 0 new axioms, eval 6.8s (light)`. Inspection confirms exact
+source conclusions and empty hypotheses for all five lemmas. Receipt:
+runs/algebra/20261004T225806Z-131033-snap_algebra-9d9fe2/transcript.log.json.
+The main catenoid source now imports the checked algebra and ordering; its heavy replay is pending.
 
 Decisions: regular unit-radius polygons n=3…7; one shake at amplitudes 0, 0.15,
 0.5; four workers; paired initial dips; success within 0.01% with convergence
@@ -40,5 +40,5 @@ catenoid proof leaf, fix any proof errors, then perform one full warm acceptance
 with zero new axioms. Replace the draft catenoid status with that command's
 verdict and decimal enclosure; push tested checkpoints to this lane's branch.
 Previous goal turn: verified wait on a confirmed live heavy build. This turn:
-progress (fixed and proved the algebraic component) and a verified wait on heavy.
+progress (proved root exclusion and uniqueness as ordering lemmas) and a verified wait on heavy.
 The complete enclosure has not yet been replayed.
