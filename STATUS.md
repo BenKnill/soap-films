@@ -19,6 +19,10 @@ real-film success rates or a universal pin-count threshold. A single shake
 does not clearly help this measured protocol. Native K-backed Linux storage
 used for the small environment, generated tables and proof run directory.
 
+Checkpoint: d4713db pushed to origin/codex/steiner-rate; catenoid source is explicitly
+an unvalidated draft. Shared missing-playbook and heavy-provisioning findings
+were deduplicated with `+1 soap-steiner` in ~/lanes/FINDINGS.md.
+
 Next: wait for the confirmed live shared heavy-profile build, run the small
 catenoid proof leaf, fix any proof errors, then perform one full warm acceptance
 with zero new axioms. Replace the draft catenoid status with that command's
