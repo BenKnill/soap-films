@@ -1,0 +1,8 @@
+[transformers] You are using a model of type `voxcpm2` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+model loaded; 42 lines
+002  5.76s  (12s elapsed)  Under the pure yellow of a sodium lamp, the rainbow turns into stripes,
+003  5.60s  (32s elapsed)  one stripe for every two hundred and twenty-one nanometers of thickness.
+022  6.40s  (46s elapsed)  Six pins: five hundred and six out of one thousand. A coin toss.
+032  7.68s  (62s elapsed)  Soon two flat discs would have less area, but the film holds on: a local minimum again.
+040  6.88s  (75s elapsed)  As this film drains, its top turns black, just a few tens of nanometers thick.
+done

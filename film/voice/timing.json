@@ -1,0 +1,928 @@
+{
+ "duration": 261.971,
+ "limit": 300,
+ "beats": {
+  "open": {
+   "at": 0,
+   "start": 0.6,
+   "speech_end": 29.7,
+   "window_end": 300,
+   "drift": 0.1,
+   "slack": 270.3,
+   "lines": [
+    {
+     "index": 0,
+     "clip": "1a1d44b18f40",
+     "seed": 42,
+     "beat": "open",
+     "show": "This soap film is thinner than a wavelength of light.",
+     "say": "This soap film is thinner than a wavelength of light.",
+     "start": 0.66,
+     "end": 4.19
+    },
+    {
+     "index": 1,
+     "clip": "7607726527b5",
+     "seed": 42,
+     "beat": "open",
+     "show": "Its colours are a ruler: each band is a different thickness.",
+     "say": "Its colours are a ruler: each band is a different thickness.",
+     "start": 4.9,
+     "end": 9.39
+    },
+    {
+     "index": 2,
+     "clip": "ea1353a29c7d",
+     "seed": 42,
+     "beat": "open",
+     "show": "Under the pure yellow of a sodium lamp, the rainbow turns into stripes,",
+     "say": "Under the pure yellow of a sodium lamp, the rainbow turns into stripes,",
+     "start": 10.1,
+     "end": 15.54
+    },
+    {
+     "index": 3,
+     "clip": "70daa7d84da2",
+     "seed": 42,
+     "beat": "open",
+     "show": "one stripe for every 221 nanometers of thickness.",
+     "say": "one stripe for every two hundred and twenty-one nanometers of thickness.",
+     "start": 15.9,
+     "end": 21.16
+    },
+    {
+     "index": 4,
+     "clip": "5b370c2f5f49",
+     "seed": 42,
+     "beat": "open",
+     "show": "A film like this pulls itself as small as it can.",
+     "say": "A film like this pulls itself as small as it can.",
+     "start": 22.12,
+     "end": 26.16
+    },
+    {
+     "index": 5,
+     "clip": "c84ed04fc058",
+     "seed": 42,
+     "beat": "open",
+     "show": "That one habit makes it a computer.",
+     "say": "That one habit makes it a computer.",
+     "start": 26.87,
+     "end": 29.6
+    }
+   ]
+  },
+  "computer": {
+   "at": null,
+   "start": 32.5,
+   "speech_end": 71.66,
+   "window_end": 300,
+   "drift": 0.0,
+   "slack": 228.34,
+   "lines": [
+    {
+     "index": 6,
+     "clip": "fda65025f40e",
+     "seed": 42,
+     "beat": "computer",
+     "show": "Put pins between two glass plates, dip them in soapy water, and lift.",
+     "say": "Put pins between two glass plates, dip them in soapy water, and lift.",
+     "start": 32.56,
+     "end": 38.12
+    },
+    {
+     "index": 7,
+     "clip": "e54beb10cce7",
+     "seed": 42,
+     "beat": "computer",
+     "show": "Film walls join the pins, and tension pulls every wall as short as it can.",
+     "say": "Film walls join the pins, and tension pulls every wall as short as it can.",
+     "start": 38.83,
+     "end": 44.62
+    },
+    {
+     "index": 8,
+     "clip": "47d7cbb30537",
+     "seed": 42,
+     "beat": "computer",
+     "show": "Where walls meet, three equal pulls balance only at 120 degrees.",
+     "say": "Where walls meet, three equal pulls balance only at a hundred and twenty degrees.",
+     "start": 45.33,
+     "end": 51.73
+    },
+    {
+     "index": 9,
+     "clip": "c34b756b2b5d",
+     "seed": 42,
+     "beat": "computer",
+     "show": "So the film hunts for the shortest network joining every pin.",
+     "say": "So the film hunts for the shortest network joining every pin.",
+     "start": 52.69,
+     "end": 56.84
+    },
+    {
+     "index": 10,
+     "clip": "9d7fdbb92ea5",
+     "seed": 42,
+     "beat": "computer",
+     "show": "That's the Steiner tree problem, and with many pins it's hard even for computers.",
+     "say": "That's the Steiner tree problem, and with many pins it's hard even for computers.",
+     "start": 57.55,
+     "end": 63.34
+    },
+    {
+     "index": 11,
+     "clip": "01c5b0be30dd",
+     "seed": 42,
+     "beat": "computer",
+     "show": "Four pins on a square: the film finds the best, 1 + √3 times the side.",
+     "say": "Four pins on a square: the film finds the best, one plus root three times the side.",
+     "start": 64.3,
+     "end": 71.56
+    }
+   ]
+  },
+  "twice": {
+   "at": null,
+   "start": 73.66,
+   "speech_end": 106.34,
+   "window_end": 300,
+   "drift": 0.0,
+   "slack": 193.66,
+   "lines": [
+    {
+     "index": 12,
+     "clip": "350f4bed6249",
+     "seed": 42,
+     "beat": "twice",
+     "show": "Now put six pins on a hexagon, and dip twice.",
+     "say": "Now put six pins on a hexagon, and dip twice.",
+     "start": 73.72,
+     "end": 78.02
+    },
+    {
+     "index": 13,
+     "clip": "17f39cdd4ceb",
+     "seed": 42,
+     "beat": "twice",
+     "show": "Both films settle, with every junction at 120 degrees.",
+     "say": "Both films settle, with every junction at a hundred and twenty degrees.",
+     "start": 78.98,
+     "end": 84.34
+    },
+    {
+     "index": 14,
+     "clip": "e582eed154f8",
+     "seed": 42,
+     "beat": "twice",
+     "show": "But they are different networks.",
+     "say": "But they are different networks.",
+     "start": 85.05,
+     "end": 87.28
+    },
+    {
+     "index": 15,
+     "clip": "4adcf875fa80",
+     "seed": 42,
+     "beat": "twice",
+     "show": "The shortest has no junctions at all: five sides of the hexagon.",
+     "say": "The shortest has no junctions at all: five sides of the hexagon.",
+     "start": 88.24,
+     "end": 93.13
+    },
+    {
+     "index": 16,
+     "clip": "e3f6327d2b6a",
+     "seed": 42,
+     "beat": "twice",
+     "show": "The other is about four percent longer, and the film keeps it anyway.",
+     "say": "The other is about four percent longer, and the film keeps it anyway.",
+     "start": 93.84,
+     "end": 98.63
+    },
+    {
+     "index": 17,
+     "clip": "8917a9fc9f77",
+     "seed": 42,
+     "beat": "twice",
+     "show": "The film found a local minimum: nothing nearby is shorter, but it isn't the shortest.",
+     "say": "The film found a local minimum: nothing nearby is shorter, but it isn't the shortest.",
+     "start": 99.59,
+     "end": 106.24
+    }
+   ]
+  },
+  "measure": {
+   "at": null,
+   "start": 107.94,
+   "speech_end": 156.67,
+   "window_end": 300,
+   "drift": 0.0,
+   "slack": 143.33,
+   "lines": [
+    {
+     "index": 18,
+     "clip": "af7284ed89ee",
+     "seed": 42,
+     "beat": "measure",
+     "show": "How often does it find the shortest? We counted, in a simulation, not a tub of soap.",
+     "say": "How often does it find the shortest? We counted, in a simulation, not a tub of soap.",
+     "start": 108.0,
+     "end": 115.04
+    },
+    {
+     "index": 19,
+     "clip": "2e0ed41d23ff",
+     "seed": 42,
+     "beat": "measure",
+     "show": "For three to seven pins on a regular polygon, we ran a thousand random dips each,",
+     "say": "For three to seven pins on a regular polygon, we ran a thousand random dips each,",
+     "start": 115.75,
+     "end": 122.37
+    },
+    {
+     "index": 20,
+     "clip": "31332e723dda",
+     "seed": 42,
+     "beat": "measure",
+     "show": "and checked each against the shortest network, found by trying every layout.",
+     "say": "and checked each against the shortest network, found by trying every layout.",
+     "start": 122.73,
+     "end": 127.88
+    },
+    {
+     "index": 21,
+     "clip": "e0db136ed69d",
+     "seed": 42,
+     "beat": "measure",
+     "show": "Three, four and five pins: a thousand out of a thousand.",
+     "say": "Three, four and five pins: a thousand out of a thousand.",
+     "start": 128.84,
+     "end": 134.07
+    },
+    {
+     "index": 22,
+     "clip": "343800ad17dc",
+     "seed": 42,
+     "beat": "measure",
+     "show": "Six pins: 506 out of one thousand. A coin toss.",
+     "say": "Six pins: five hundred and six out of one thousand. A coin toss.",
+     "start": 134.78,
+     "end": 140.88
+    },
+    {
+     "index": 23,
+     "clip": "c347a5bc446f",
+     "seed": 42,
+     "beat": "measure",
+     "show": "The biggest drop is from five pins to six.",
+     "say": "The biggest drop is from five pins to six.",
+     "start": 141.59,
+     "end": 145.12
+    },
+    {
+     "index": 24,
+     "clip": "385978381882",
+     "seed": 42,
+     "beat": "measure",
+     "show": "Seven pins recover a little, to 58 percent.",
+     "say": "Seven pins recover a little, to fifty-eight percent.",
+     "start": 146.08,
+     "end": 150.07
+    },
+    {
+     "index": 25,
+     "clip": "575d87f54b7e",
+     "seed": 42,
+     "beat": "measure",
+     "show": "But the polygon changes shape with the pin count, so this curve belongs to this setup.",
+     "say": "But the polygon changes shape with the pin count, so this curve belongs to this setup.",
+     "start": 150.78,
+     "end": 156.57
+    }
+   ]
+  },
+  "shake": {
+   "at": null,
+   "start": 157.87,
+   "speech_end": 178.58,
+   "window_end": 300,
+   "drift": 0.0,
+   "slack": 121.42,
+   "lines": [
+    {
+     "index": 26,
+     "clip": "e31273d7730d",
+     "seed": 42,
+     "beat": "shake",
+     "show": "Can shaking help? Jiggling lets a system escape a poor valley; that's the idea of annealing.",
+     "say": "Can shaking help? Jiggling lets a system escape a poor valley; that's the idea of annealing.",
+     "start": 157.93,
+     "end": 165.4
+    },
+    {
+     "index": 27,
+     "clip": "0499d4d38fec",
+     "seed": 42,
+     "beat": "shake",
+     "show": "One shake after settling moved six pins from 50.6 to 51 percent.",
+     "say": "One shake after settling moved six pins from fifty point six to fifty-one percent.",
+     "start": 166.11,
+     "end": 172.69
+    },
+    {
+     "index": 28,
+     "clip": "a5f484748a41",
+     "seed": 42,
+     "beat": "shake",
+     "show": "That is inside the noise. This shake did not rescue the film.",
+     "say": "That is inside the noise. This shake did not rescue the film.",
+     "start": 173.4,
+     "end": 178.48
+    }
+   ]
+  },
+  "rings": {
+   "at": null,
+   "start": 180.38,
+   "speech_end": 211.031,
+   "window_end": 300,
+   "drift": 0.0,
+   "slack": 88.969,
+   "lines": [
+    {
+     "index": 29,
+     "clip": "42323fb01992",
+     "seed": 42,
+     "beat": "rings",
+     "show": "Here is the same story as one smooth dial.",
+     "say": "Here is the same story as one smooth dial.",
+     "start": 180.44,
+     "end": 183.86
+    },
+    {
+     "index": 30,
+     "clip": "d78d5c23b7f3",
+     "seed": 42,
+     "beat": "rings",
+     "show": "Between two rings, a film makes a catenoid: a hanging chain's curve, spun around the axis.",
+     "say": "Between two rings, a film makes a catenoid: a hanging chain's curve, spun around the axis.",
+     "start": 184.57,
+     "end": 191.99
+    },
+    {
+     "index": 31,
+     "clip": "8713979b35a6",
+     "seed": 42,
+     "beat": "rings",
+     "show": "Pull the rings apart, and its waist narrows.",
+     "say": "Pull the rings apart, and its waist narrows.",
+     "start": 192.95,
+     "end": 196.171
+    },
+    {
+     "index": 32,
+     "clip": "cec5140cb3ca",
+     "seed": 42,
+     "beat": "rings",
+     "show": "Soon two flat discs would have less area, but the film holds on: a local minimum again.",
+     "say": "Soon two flat discs would have less area, but the film holds on: a local minimum again.",
+     "start": 196.881,
+     "end": 204.401
+    },
+    {
+     "index": 33,
+     "clip": "404cd2e0bf8a",
+     "seed": 42,
+     "beat": "rings",
+     "show": "Then there is no catenoid left to keep. The film snaps.",
+     "say": "Then there is no catenoid left to keep. The film snaps.",
+     "start": 205.361,
+     "end": 210.931
+    }
+   ]
+  },
+  "proof": {
+   "at": null,
+   "start": 214.431,
+   "speech_end": 244.231,
+   "window_end": 300,
+   "drift": 0.0,
+   "slack": 55.769,
+   "lines": [
+    {
+     "index": 34,
+     "clip": "cbef16215c05",
+     "seed": 42,
+     "beat": "proof",
+     "show": "The snap comes where t · tanh t = 1.",
+     "say": "The snap comes where t times the hyperbolic tangent of t equals one.",
+     "start": 214.491,
+     "end": 220.261
+    },
+    {
+     "index": 35,
+     "clip": "40918f123eaa",
+     "seed": 42,
+     "beat": "proof",
+     "show": "In the HOL Light theorem prover, we proved that this has exactly one positive root,",
+     "say": "In the H-O-L Light theorem prover, we proved that this has exactly one positive root,",
+     "start": 220.971,
+     "end": 227.401
+    },
+    {
+     "index": 36,
+     "clip": "ed5513f53cbf",
+     "seed": 42,
+     "beat": "proof",
+     "show": "and pinned it down to within one ten-billionth.",
+     "say": "and pinned it down to within one ten-billionth.",
+     "start": 227.761,
+     "end": 230.971
+    },
+    {
+     "index": 37,
+     "clip": "29bf240fe273",
+     "seed": 42,
+     "beat": "proof",
+     "show": "The ring spacing at the snap, about 1.33 radii, is computed, not proved.",
+     "say": "The ring spacing at the snap, about one point three three radii, is computed, not proved.",
+     "start": 231.931,
+     "end": 239.211
+    },
+    {
+     "index": 38,
+     "clip": "3b1ac28865c0",
+     "seed": 42,
+     "beat": "proof",
+     "show": "The proof covers this equation. It does not cover the fluid.",
+     "say": "The proof covers this equation. It does not cover the fluid.",
+     "start": 239.921,
+     "end": 244.131
+    }
+   ]
+  },
+  "end": {
+   "at": null,
+   "start": 246.031,
+   "speech_end": 261.371,
+   "window_end": 300,
+   "drift": 0.0,
+   "slack": 38.629,
+   "lines": [
+    {
+     "index": 39,
+     "clip": "875e641349c3",
+     "seed": 42,
+     "beat": "end",
+     "show": "Settling down is a way to compute. It is not a promise of the best answer.",
+     "say": "Settling down is a way to compute. It is not a promise of the best answer.",
+     "start": 246.091,
+     "end": 251.601
+    },
+    {
+     "index": 40,
+     "clip": "9d9a2b5ded5f",
+     "seed": 42,
+     "beat": "end",
+     "show": "As this film drains, its top turns black, just a few tens of nanometers thick.",
+     "say": "As this film drains, its top turns black, just a few tens of nanometers thick.",
+     "start": 252.561,
+     "end": 258.981
+    },
+    {
+     "index": 41,
+     "clip": "d706d97ba663",
+     "seed": 42,
+     "beat": "end",
+     "show": "And then it's gone.",
+     "say": "And then it's gone.",
+     "start": 259.691,
+     "end": 261.271
+    }
+   ]
+  }
+ },
+ "lines": [
+  {
+   "index": 0,
+   "clip": "1a1d44b18f40",
+   "seed": 42,
+   "beat": "open",
+   "show": "This soap film is thinner than a wavelength of light.",
+   "say": "This soap film is thinner than a wavelength of light.",
+   "start": 0.66,
+   "end": 4.19
+  },
+  {
+   "index": 1,
+   "clip": "7607726527b5",
+   "seed": 42,
+   "beat": "open",
+   "show": "Its colours are a ruler: each band is a different thickness.",
+   "say": "Its colours are a ruler: each band is a different thickness.",
+   "start": 4.9,
+   "end": 9.39
+  },
+  {
+   "index": 2,
+   "clip": "ea1353a29c7d",
+   "seed": 42,
+   "beat": "open",
+   "show": "Under the pure yellow of a sodium lamp, the rainbow turns into stripes,",
+   "say": "Under the pure yellow of a sodium lamp, the rainbow turns into stripes,",
+   "start": 10.1,
+   "end": 15.54
+  },
+  {
+   "index": 3,
+   "clip": "70daa7d84da2",
+   "seed": 42,
+   "beat": "open",
+   "show": "one stripe for every 221 nanometers of thickness.",
+   "say": "one stripe for every two hundred and twenty-one nanometers of thickness.",
+   "start": 15.9,
+   "end": 21.16
+  },
+  {
+   "index": 4,
+   "clip": "5b370c2f5f49",
+   "seed": 42,
+   "beat": "open",
+   "show": "A film like this pulls itself as small as it can.",
+   "say": "A film like this pulls itself as small as it can.",
+   "start": 22.12,
+   "end": 26.16
+  },
+  {
+   "index": 5,
+   "clip": "c84ed04fc058",
+   "seed": 42,
+   "beat": "open",
+   "show": "That one habit makes it a computer.",
+   "say": "That one habit makes it a computer.",
+   "start": 26.87,
+   "end": 29.6
+  },
+  {
+   "index": 6,
+   "clip": "fda65025f40e",
+   "seed": 42,
+   "beat": "computer",
+   "show": "Put pins between two glass plates, dip them in soapy water, and lift.",
+   "say": "Put pins between two glass plates, dip them in soapy water, and lift.",
+   "start": 32.56,
+   "end": 38.12
+  },
+  {
+   "index": 7,
+   "clip": "e54beb10cce7",
+   "seed": 42,
+   "beat": "computer",
+   "show": "Film walls join the pins, and tension pulls every wall as short as it can.",
+   "say": "Film walls join the pins, and tension pulls every wall as short as it can.",
+   "start": 38.83,
+   "end": 44.62
+  },
+  {
+   "index": 8,
+   "clip": "47d7cbb30537",
+   "seed": 42,
+   "beat": "computer",
+   "show": "Where walls meet, three equal pulls balance only at 120 degrees.",
+   "say": "Where walls meet, three equal pulls balance only at a hundred and twenty degrees.",
+   "start": 45.33,
+   "end": 51.73
+  },
+  {
+   "index": 9,
+   "clip": "c34b756b2b5d",
+   "seed": 42,
+   "beat": "computer",
+   "show": "So the film hunts for the shortest network joining every pin.",
+   "say": "So the film hunts for the shortest network joining every pin.",
+   "start": 52.69,
+   "end": 56.84
+  },
+  {
+   "index": 10,
+   "clip": "9d7fdbb92ea5",
+   "seed": 42,
+   "beat": "computer",
+   "show": "That's the Steiner tree problem, and with many pins it's hard even for computers.",
+   "say": "That's the Steiner tree problem, and with many pins it's hard even for computers.",
+   "start": 57.55,
+   "end": 63.34
+  },
+  {
+   "index": 11,
+   "clip": "01c5b0be30dd",
+   "seed": 42,
+   "beat": "computer",
+   "show": "Four pins on a square: the film finds the best, 1 + √3 times the side.",
+   "say": "Four pins on a square: the film finds the best, one plus root three times the side.",
+   "start": 64.3,
+   "end": 71.56
+  },
+  {
+   "index": 12,
+   "clip": "350f4bed6249",
+   "seed": 42,
+   "beat": "twice",
+   "show": "Now put six pins on a hexagon, and dip twice.",
+   "say": "Now put six pins on a hexagon, and dip twice.",
+   "start": 73.72,
+   "end": 78.02
+  },
+  {
+   "index": 13,
+   "clip": "17f39cdd4ceb",
+   "seed": 42,
+   "beat": "twice",
+   "show": "Both films settle, with every junction at 120 degrees.",
+   "say": "Both films settle, with every junction at a hundred and twenty degrees.",
+   "start": 78.98,
+   "end": 84.34
+  },
+  {
+   "index": 14,
+   "clip": "e582eed154f8",
+   "seed": 42,
+   "beat": "twice",
+   "show": "But they are different networks.",
+   "say": "But they are different networks.",
+   "start": 85.05,
+   "end": 87.28
+  },
+  {
+   "index": 15,
+   "clip": "4adcf875fa80",
+   "seed": 42,
+   "beat": "twice",
+   "show": "The shortest has no junctions at all: five sides of the hexagon.",
+   "say": "The shortest has no junctions at all: five sides of the hexagon.",
+   "start": 88.24,
+   "end": 93.13
+  },
+  {
+   "index": 16,
+   "clip": "e3f6327d2b6a",
+   "seed": 42,
+   "beat": "twice",
+   "show": "The other is about four percent longer, and the film keeps it anyway.",
+   "say": "The other is about four percent longer, and the film keeps it anyway.",
+   "start": 93.84,
+   "end": 98.63
+  },
+  {
+   "index": 17,
+   "clip": "8917a9fc9f77",
+   "seed": 42,
+   "beat": "twice",
+   "show": "The film found a local minimum: nothing nearby is shorter, but it isn't the shortest.",
+   "say": "The film found a local minimum: nothing nearby is shorter, but it isn't the shortest.",
+   "start": 99.59,
+   "end": 106.24
+  },
+  {
+   "index": 18,
+   "clip": "af7284ed89ee",
+   "seed": 42,
+   "beat": "measure",
+   "show": "How often does it find the shortest? We counted, in a simulation, not a tub of soap.",
+   "say": "How often does it find the shortest? We counted, in a simulation, not a tub of soap.",
+   "start": 108.0,
+   "end": 115.04
+  },
+  {
+   "index": 19,
+   "clip": "2e0ed41d23ff",
+   "seed": 42,
+   "beat": "measure",
+   "show": "For three to seven pins on a regular polygon, we ran a thousand random dips each,",
+   "say": "For three to seven pins on a regular polygon, we ran a thousand random dips each,",
+   "start": 115.75,
+   "end": 122.37
+  },
+  {
+   "index": 20,
+   "clip": "31332e723dda",
+   "seed": 42,
+   "beat": "measure",
+   "show": "and checked each against the shortest network, found by trying every layout.",
+   "say": "and checked each against the shortest network, found by trying every layout.",
+   "start": 122.73,
+   "end": 127.88
+  },
+  {
+   "index": 21,
+   "clip": "e0db136ed69d",
+   "seed": 42,
+   "beat": "measure",
+   "show": "Three, four and five pins: a thousand out of a thousand.",
+   "say": "Three, four and five pins: a thousand out of a thousand.",
+   "start": 128.84,
+   "end": 134.07
+  },
+  {
+   "index": 22,
+   "clip": "343800ad17dc",
+   "seed": 42,
+   "beat": "measure",
+   "show": "Six pins: 506 out of one thousand. A coin toss.",
+   "say": "Six pins: five hundred and six out of one thousand. A coin toss.",
+   "start": 134.78,
+   "end": 140.88
+  },
+  {
+   "index": 23,
+   "clip": "c347a5bc446f",
+   "seed": 42,
+   "beat": "measure",
+   "show": "The biggest drop is from five pins to six.",
+   "say": "The biggest drop is from five pins to six.",
+   "start": 141.59,
+   "end": 145.12
+  },
+  {
+   "index": 24,
+   "clip": "385978381882",
+   "seed": 42,
+   "beat": "measure",
+   "show": "Seven pins recover a little, to 58 percent.",
+   "say": "Seven pins recover a little, to fifty-eight percent.",
+   "start": 146.08,
+   "end": 150.07
+  },
+  {
+   "index": 25,
+   "clip": "575d87f54b7e",
+   "seed": 42,
+   "beat": "measure",
+   "show": "But the polygon changes shape with the pin count, so this curve belongs to this setup.",
+   "say": "But the polygon changes shape with the pin count, so this curve belongs to this setup.",
+   "start": 150.78,
+   "end": 156.57
+  },
+  {
+   "index": 26,
+   "clip": "e31273d7730d",
+   "seed": 42,
+   "beat": "shake",
+   "show": "Can shaking help? Jiggling lets a system escape a poor valley; that's the idea of annealing.",
+   "say": "Can shaking help? Jiggling lets a system escape a poor valley; that's the idea of annealing.",
+   "start": 157.93,
+   "end": 165.4
+  },
+  {
+   "index": 27,
+   "clip": "0499d4d38fec",
+   "seed": 42,
+   "beat": "shake",
+   "show": "One shake after settling moved six pins from 50.6 to 51 percent.",
+   "say": "One shake after settling moved six pins from fifty point six to fifty-one percent.",
+   "start": 166.11,
+   "end": 172.69
+  },
+  {
+   "index": 28,
+   "clip": "a5f484748a41",
+   "seed": 42,
+   "beat": "shake",
+   "show": "That is inside the noise. This shake did not rescue the film.",
+   "say": "That is inside the noise. This shake did not rescue the film.",
+   "start": 173.4,
+   "end": 178.48
+  },
+  {
+   "index": 29,
+   "clip": "42323fb01992",
+   "seed": 42,
+   "beat": "rings",
+   "show": "Here is the same story as one smooth dial.",
+   "say": "Here is the same story as one smooth dial.",
+   "start": 180.44,
+   "end": 183.86
+  },
+  {
+   "index": 30,
+   "clip": "d78d5c23b7f3",
+   "seed": 42,
+   "beat": "rings",
+   "show": "Between two rings, a film makes a catenoid: a hanging chain's curve, spun around the axis.",
+   "say": "Between two rings, a film makes a catenoid: a hanging chain's curve, spun around the axis.",
+   "start": 184.57,
+   "end": 191.99
+  },
+  {
+   "index": 31,
+   "clip": "8713979b35a6",
+   "seed": 42,
+   "beat": "rings",
+   "show": "Pull the rings apart, and its waist narrows.",
+   "say": "Pull the rings apart, and its waist narrows.",
+   "start": 192.95,
+   "end": 196.171
+  },
+  {
+   "index": 32,
+   "clip": "cec5140cb3ca",
+   "seed": 42,
+   "beat": "rings",
+   "show": "Soon two flat discs would have less area, but the film holds on: a local minimum again.",
+   "say": "Soon two flat discs would have less area, but the film holds on: a local minimum again.",
+   "start": 196.881,
+   "end": 204.401
+  },
+  {
+   "index": 33,
+   "clip": "404cd2e0bf8a",
+   "seed": 42,
+   "beat": "rings",
+   "show": "Then there is no catenoid left to keep. The film snaps.",
+   "say": "Then there is no catenoid left to keep. The film snaps.",
+   "start": 205.361,
+   "end": 210.931
+  },
+  {
+   "index": 34,
+   "clip": "cbef16215c05",
+   "seed": 42,
+   "beat": "proof",
+   "show": "The snap comes where t · tanh t = 1.",
+   "say": "The snap comes where t times the hyperbolic tangent of t equals one.",
+   "start": 214.491,
+   "end": 220.261
+  },
+  {
+   "index": 35,
+   "clip": "40918f123eaa",
+   "seed": 42,
+   "beat": "proof",
+   "show": "In the HOL Light theorem prover, we proved that this has exactly one positive root,",
+   "say": "In the H-O-L Light theorem prover, we proved that this has exactly one positive root,",
+   "start": 220.971,
+   "end": 227.401
+  },
+  {
+   "index": 36,
+   "clip": "ed5513f53cbf",
+   "seed": 42,
+   "beat": "proof",
+   "show": "and pinned it down to within one ten-billionth.",
+   "say": "and pinned it down to within one ten-billionth.",
+   "start": 227.761,
+   "end": 230.971
+  },
+  {
+   "index": 37,
+   "clip": "29bf240fe273",
+   "seed": 42,
+   "beat": "proof",
+   "show": "The ring spacing at the snap, about 1.33 radii, is computed, not proved.",
+   "say": "The ring spacing at the snap, about one point three three radii, is computed, not proved.",
+   "start": 231.931,
+   "end": 239.211
+  },
+  {
+   "index": 38,
+   "clip": "3b1ac28865c0",
+   "seed": 42,
+   "beat": "proof",
+   "show": "The proof covers this equation. It does not cover the fluid.",
+   "say": "The proof covers this equation. It does not cover the fluid.",
+   "start": 239.921,
+   "end": 244.131
+  },
+  {
+   "index": 39,
+   "clip": "875e641349c3",
+   "seed": 42,
+   "beat": "end",
+   "show": "Settling down is a way to compute. It is not a promise of the best answer.",
+   "say": "Settling down is a way to compute. It is not a promise of the best answer.",
+   "start": 246.091,
+   "end": 251.601
+  },
+  {
+   "index": 40,
+   "clip": "9d9a2b5ded5f",
+   "seed": 42,
+   "beat": "end",
+   "show": "As this film drains, its top turns black, just a few tens of nanometers thick.",
+   "say": "As this film drains, its top turns black, just a few tens of nanometers thick.",
+   "start": 252.561,
+   "end": 258.981
+  },
+  {
+   "index": 41,
+   "clip": "d706d97ba663",
+   "seed": 42,
+   "beat": "end",
+   "show": "And then it's gone.",
+   "say": "And then it's gone.",
+   "start": 259.691,
+   "end": 261.271
+  }
+ ]
+}

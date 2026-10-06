@@ -1,0 +1,195 @@
+{
+ "fps": 24,
+ "xf": 0.5,
+ "duration": 270.471,
+ "audio_end": 261.971,
+ "shots": [
+  {
+   "id": "open",
+   "kind": "blender:flatfilm.py",
+   "start": 0.0,
+   "end": 32.0,
+   "frames": 768,
+   "args": {
+    "dist": "0:2.05,382:2.2,561:3.25,768:3.35",
+    "yaw": "0:-7,768:5",
+    "pitch": "3",
+    "lens": "50",
+    "flow": "0.035",
+    "soft": "2.6"
+   },
+   "cues": {
+    "na_in": 9.9,
+    "na_out": 21.52,
+    "stripe": 15.9,
+    "title": 26.67
+   }
+  },
+  {
+   "id": "open-sodium",
+   "kind": "blender:flatfilm.py",
+   "start": 9.667,
+   "end": 22.5,
+   "frames": 308,
+   "first": 232,
+   "args": {
+    "dist": "0:2.05,382:2.2,561:3.25,768:3.35",
+    "yaw": "0:-7,768:5",
+    "pitch": "3",
+    "lens": "50",
+    "flow": "0.035",
+    "soft": "2.6",
+    "light": "sodium"
+   },
+   "cues": {}
+  },
+  {
+   "id": "computer",
+   "kind": "blender:computer.py",
+   "start": 31.5,
+   "end": 73.46,
+   "frames": 1007,
+   "args": {
+    "traj": "../data/traj-n4-d2.json",
+    "starts": "126",
+    "dur": "132",
+    "lift": "30",
+    "arcs": "332:514",
+    "dist": "0:6.1,1007:5.4",
+    "pitch": "56",
+    "yaw": "-30",
+    "yawrate": "0.03",
+    "soft": "2.4"
+   },
+   "cues": {
+    "arcs": 13.83,
+    "arcs_end": 21.43,
+    "answer": 34.8,
+    "tag": 5.26
+   }
+  },
+  {
+   "id": "twice",
+   "kind": "blender:computer.py",
+   "start": 72.96,
+   "end": 107.74,
+   "frames": 835,
+   "args": {
+    "traj": "../data/traj-n6-d0.json,../data/traj-n6-d2.json",
+    "offs": "-1.4,1.4",
+    "starts": "107,160",
+    "dur": "150,170",
+    "lift": "30",
+    "dist": "0:8.6,835:8.0",
+    "pitch": "58",
+    "yaw": "-6",
+    "yawrate": "0.008",
+    "soft": "2.4"
+   },
+   "cues": {
+    "tag": 5.06,
+    "shortest": 15.28,
+    "longer": 20.88,
+    "local": 26.63
+   }
+  },
+  {
+   "id": "dips",
+   "kind": "2d:dips",
+   "start": 107.24,
+   "end": 128.14,
+   "frames": 502,
+   "args": {},
+   "cues": {
+    "grid": 1.16,
+    "check": 15.79
+   }
+  },
+  {
+   "id": "chart",
+   "kind": "2d:chart",
+   "start": 127.64,
+   "end": 180.18,
+   "frames": 1261,
+   "args": {},
+   "cues": {
+    "c345": 1.2,
+    "c6": 7.14,
+    "knee": 13.95,
+    "c7": 18.44,
+    "shape": 24.64,
+    "shake": 38.47,
+    "noise": 45.76
+   }
+  },
+  {
+   "id": "rings",
+   "kind": "blender:catenoid.py",
+   "start": 179.68,
+   "end": 214.031,
+   "frames": 824,
+   "args": {
+    "hr": "0:0.55,318:0.56,396:0.97,427:1.0,593:1.24,679:1.3254",
+    "snap": "698",
+    "flow": "40",
+    "split": "10",
+    "hr_final": "1.335",
+    "dist": "6.3",
+    "pitch": "13",
+    "yaw": "-10",
+    "yawrate": "0.03",
+    "soft": "2.2"
+   },
+   "cues": {
+    "readout": 12.77,
+    "equal": 17.201,
+    "snap": 29.083
+   }
+  },
+  {
+   "id": "proof",
+   "kind": "2d:proof",
+   "start": 213.531,
+   "end": 245.731,
+   "frames": 773,
+   "args": {},
+   "cues": {
+    "root": 1.96,
+    "prover": 7.44,
+    "pin": 14.23,
+    "computed": 18.4,
+    "fluid": 26.39
+   }
+  },
+  {
+   "id": "end",
+   "kind": "blender:flatfilm.py",
+   "start": 245.231,
+   "end": 263.971,
+   "frames": 450,
+   "args": {
+    "dist": "3.3",
+    "yaw": "-4",
+    "pitch": "2",
+    "lens": "50",
+    "flow": "0.035",
+    "soft": "2.6",
+    "thin": "0:1.0,176:0.9,330:0.62",
+    "black": "0:-0.3,170:-0.3,336:0.62",
+    "hole": "0:-1,389:-1,390:0.0,396:2.4"
+   },
+   "cues": {
+    "pop": 16.208
+   }
+  },
+  {
+   "id": "endcard",
+   "kind": "2d:endcard",
+   "start": 263.471,
+   "end": 270.471,
+   "frames": 168,
+   "args": {},
+   "cues": {}
+  }
+ ]
+}

@@ -1,0 +1,380 @@
+[
+ {
+  "i": 0,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 10,
+  "ref": "say",
+  "say": "This soap film is thinner than a wavelength of light.",
+  "heard": "This soap film is thinner than a wavelength of light."
+ },
+ {
+  "i": 1,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 11,
+  "ref": "say",
+  "say": "Its colours are a ruler: each band is a different thickness.",
+  "heard": "Its colors are a ruler. Each band is a different thickness."
+ },
+ {
+  "i": 2,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 13,
+  "ref": "say",
+  "say": "Under the pure yellow of a sodium lamp, the rainbow turns into stripes,",
+  "heard": "Under the pure yellow of a sodium lamp, the rainbow turns into stripes."
+ },
+ {
+  "i": 3,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 8,
+  "ref": "say",
+  "say": "one stripe for every two hundred and twenty-one nanometers of thickness.",
+  "heard": "One stripe for every 221 nanometers of thickness."
+ },
+ {
+  "i": 4,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 11,
+  "ref": "say",
+  "say": "A film like this pulls itself as small as it can.",
+  "heard": "A film like this pulls itself as small as it can."
+ },
+ {
+  "i": 5,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 7,
+  "ref": "say",
+  "say": "That one habit makes it a computer.",
+  "heard": "That one habit makes it a computer."
+ },
+ {
+  "i": 6,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 13,
+  "ref": "say",
+  "say": "Put pins between two glass plates, dip them in soapy water, and lift.",
+  "heard": "Put pins between two glass plates, dip them in soapy water, and lift."
+ },
+ {
+  "i": 7,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 15,
+  "ref": "say",
+  "say": "Film walls join the pins, and tension pulls every wall as short as it can.",
+  "heard": "Film walls join the pins, and tension pulls every wall as short as it can."
+ },
+ {
+  "i": 8,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 11,
+  "ref": "show",
+  "say": "Where walls meet, three equal pulls balance only at a hundred and twenty degrees.",
+  "heard": "Where walls meet, three equal pulls balance only at 120 degrees."
+ },
+ {
+  "i": 9,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 11,
+  "ref": "say",
+  "say": "So the film hunts for the shortest network joining every pin.",
+  "heard": "So the film hunts for the shortest network joining every pin."
+ },
+ {
+  "i": 10,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 16,
+  "ref": "say",
+  "say": "That's the Steiner tree problem, and with many pins it's hard even for computers.",
+  "heard": "That's the Steiner tree problem, and with many pins it's hard even for computers."
+ },
+ {
+  "i": 11,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 17,
+  "ref": "say",
+  "say": "Four pins on a square: the film finds the best, one plus root three times the side.",
+  "heard": "Four pins on a square, the film finds the best, 1 plus root 3 times the side."
+ },
+ {
+  "i": 12,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 10,
+  "ref": "say",
+  "say": "Now put six pins on a hexagon, and dip twice.",
+  "heard": "Now put six pins on a hexagon and dip twice."
+ },
+ {
+  "i": 13,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 9,
+  "ref": "show",
+  "say": "Both films settle, with every junction at a hundred and twenty degrees.",
+  "heard": "Both films settle, with every junction at 120 degrees."
+ },
+ {
+  "i": 14,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 5,
+  "ref": "say",
+  "say": "But they are different networks.",
+  "heard": "but they are different networks."
+ },
+ {
+  "i": 15,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 12,
+  "ref": "say",
+  "say": "The shortest has no junctions at all: five sides of the hexagon.",
+  "heard": "The shortest has no junctions at all, five sides of the hexagon."
+ },
+ {
+  "i": 16,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 12,
+  "ref": "say",
+  "say": "The other is about four percent longer, and the film keeps it anyway.",
+  "heard": "The other is about 4% longer, and the film keeps it anyway."
+ },
+ {
+  "i": 17,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 16,
+  "ref": "say",
+  "say": "The film found a local minimum: nothing nearby is shorter, but it isn't the shortest.",
+  "heard": "The film found a local minimum. Nothing nearby is shorter, but it isn't the shortest."
+ },
+ {
+  "i": 18,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 17,
+  "ref": "say",
+  "say": "How often does it find the shortest? We counted, in a simulation, not a tub of soap.",
+  "heard": "How often does it find the shortest? We counted in a simulation, not a tub of soap."
+ },
+ {
+  "i": 19,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 16,
+  "ref": "say",
+  "say": "For three to seven pins on a regular polygon, we ran a thousand random dips each,",
+  "heard": "For three to seven pins on a regular polygon, we ran a thousand random dips each."
+ },
+ {
+  "i": 20,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 12,
+  "ref": "say",
+  "say": "and checked each against the shortest network, found by trying every layout.",
+  "heard": "and checked each against the shortest network, found by trying every layout."
+ },
+ {
+  "i": 21,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 10,
+  "ref": "say",
+  "say": "Three, four and five pins: a thousand out of a thousand.",
+  "heard": "Three, four, and five pins, a thousand out of a thousand."
+ },
+ {
+  "i": 22,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 9,
+  "ref": "say",
+  "say": "Six pins: five hundred and six out of one thousand. A coin toss.",
+  "heard": "6 pins, 506 out of 1,000. A coin toss."
+ },
+ {
+  "i": 23,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 9,
+  "ref": "say",
+  "say": "The biggest drop is from five pins to six.",
+  "heard": "The biggest drop is from 5 pins to 6."
+ },
+ {
+  "i": 24,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 7,
+  "ref": "say",
+  "say": "Seven pins recover a little, to fifty-eight percent.",
+  "heard": "7 pins recover a little, to 58%."
+ },
+ {
+  "i": 25,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 16,
+  "ref": "say",
+  "say": "But the polygon changes shape with the pin count, so this curve belongs to this setup.",
+  "heard": "But the polygon changes shape with the pin count, so this curve belongs to this setup."
+ },
+ {
+  "i": 26,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 17,
+  "ref": "say",
+  "say": "Can shaking help? Jiggling lets a system escape a poor valley; that's the idea of annealing.",
+  "heard": "Can shaking help? Jiggling lets a system escape a poor valley. That's the idea of annealing."
+ },
+ {
+  "i": 27,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 11,
+  "ref": "say",
+  "say": "One shake after settling moved six pins from fifty point six to fifty-one percent.",
+  "heard": "One shake after settling moved six pins from 50.6 to 51%."
+ },
+ {
+  "i": 28,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 12,
+  "ref": "say",
+  "say": "That is inside the noise. This shake did not rescue the film.",
+  "heard": "That is inside the noise. This shake did not rescue the film."
+ },
+ {
+  "i": 29,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 9,
+  "ref": "say",
+  "say": "Here is the same story as one smooth dial.",
+  "heard": "Here is the same story as one smooth dial."
+ },
+ {
+  "i": 30,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 17,
+  "ref": "say",
+  "say": "Between two rings, a film makes a catenoid: a hanging chain's curve, spun around the axis.",
+  "heard": "Between two rings, a film makes a catenoid, a hanging chain's curve spun around the axis."
+ },
+ {
+  "i": 31,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 8,
+  "ref": "say",
+  "say": "Pull the rings apart, and its waist narrows.",
+  "heard": "Pull the rings apart and its waist narrows."
+ },
+ {
+  "i": 32,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 17,
+  "ref": "say",
+  "say": "Soon two flat discs would have less area, but the film holds on: a local minimum again.",
+  "heard": "Soon two flat discs would have less area, but the film holds on, a local minimum again."
+ },
+ {
+  "i": 33,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 11,
+  "ref": "say",
+  "say": "Then there is no catenoid left to keep. The film snaps.",
+  "heard": "Then, there is no catenoid left to keep. The film snaps."
+ },
+ {
+  "i": 34,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 13,
+  "ref": "say",
+  "say": "The snap comes where t times the hyperbolic tangent of t equals one.",
+  "heard": "The snap comes where T times the hyperbolic tangent of T equals 1."
+ },
+ {
+  "i": 35,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 15,
+  "ref": "say",
+  "say": "In the H-O-L Light theorem prover, we proved that this has exactly one positive root,",
+  "heard": "In the HOL light theorem prover, we proved that this has exactly one positive root."
+ },
+ {
+  "i": 36,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 7,
+  "ref": "say",
+  "say": "and pinned it down to within one ten-billionth.",
+  "heard": "and pinned it down to within one ten billionth."
+ },
+ {
+  "i": 37,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 13,
+  "ref": "say",
+  "say": "The ring spacing at the snap, about one point three three radii, is computed, not proved.",
+  "heard": "The ring spacing at the snap, about 1.33 radii, is computed, not proved."
+ },
+ {
+  "i": 38,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 11,
+  "ref": "say",
+  "say": "The proof covers this equation. It does not cover the fluid.",
+  "heard": "The proof covers this equation, it does not cover the fluid."
+ },
+ {
+  "i": 39,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 16,
+  "ref": "say",
+  "say": "Settling down is a way to compute. It is not a promise of the best answer.",
+  "heard": "Settling down is a way to compute. It is not a promise of the best answer."
+ },
+ {
+  "i": 40,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 15,
+  "ref": "say",
+  "say": "As this film drains, its top turns black, just a few tens of nanometers thick.",
+  "heard": "As this film drains, its top turns black, just a few tens of nanometers thick."
+ },
+ {
+  "i": 41,
+  "wer": 0.0,
+  "errors": 0,
+  "ref_words": 5,
+  "ref": "say",
+  "say": "And then it's gone.",
+  "heard": "And then it's gone."
+ }
+]

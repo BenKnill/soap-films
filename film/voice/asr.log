@@ -1,0 +1,18 @@
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer WhisperTokenizer. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+02 WER 2/13=0.154 vs say
+  say:   Under a sodium street lamp's pure yellow, the rainbow turns into stripes,
+  heard: Under a sodium streetlamp's pure yellow, the rainbow turns into stripes.
+03 WER 1/8=0.125 vs say
+  say:   one stripe for every two hundred and twenty-one nanometres of thickness.
+  heard: One stripe for every 221 nanometers of thickness.
+22 WER 1/10=0.100 vs say
+  say:   Six pins: five hundred and six out of a thousand. A coin toss.
+  heard: 6 pins, 506 out of 1,000. A coin toss.
+32 WER 1/18=0.056 vs say
+  say:   Soon two flat disks would have less area, but the film keeps its waist: a local minimum again.
+  heard: Soon two flat discs would have less area, but the film keeps its waste, a local minimum again.
+40 WER 1/15=0.067 vs say
+  say:   As this film drains, its top turns black, just a few tens of nanometres thick.
+  heard: As this film drains, its top turns black, just a few tens of nanometers thick.
+FAIL asr: 42 clips, overall WER 6/502=0.0120, worst clip 0.154 (limit 0.10), 37 clips exact

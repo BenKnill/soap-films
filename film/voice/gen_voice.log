@@ -1,0 +1,45 @@
+[transformers] You are using a model of type `voxcpm2` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+model loaded; 42 lines
+000  3.84s  (10s elapsed)  This soap film is thinner than a wavelength of light.
+001  4.96s  (22s elapsed)  Its colours are a ruler: each band is a different thickness.
+002  5.92s  (198s elapsed)  Under a sodium street lamp's pure yellow, the rainbow turns into stripes,
+003  5.44s  (210s elapsed)  one stripe for every two hundred and twenty-one nanometres of thickness.
+004  5.12s  (222s elapsed)  A film like this pulls itself as small as it can.
+005  3.04s  (230s elapsed)  That one habit makes it a computer.
+006  5.92s  (239s elapsed)  Put pins between two glass plates, dip them in soapy water, and lift.
+007  6.24s  (253s elapsed)  Film walls join the pins, and tension pulls every wall as short as it can.
+008  6.72s  (465s elapsed)  Where walls meet, three equal pulls balance only at a hundred and twenty degrees.
+009  4.48s  (496s elapsed)  So the film hunts for the shortest network joining every pin.
+010  6.88s  (537s elapsed)  That's the Steiner tree problem, and with many pins it's hard even for computers.
+011  7.52s  (939s elapsed)  Four pins on a square: the film finds the best, one plus root three times the side.
+012  4.64s  (963s elapsed)  Now put six pins on a hexagon, and dip twice.
+013  5.60s  (999s elapsed)  Both films settle, with every junction at a hundred and twenty degrees.
+014  2.72s  (1007s elapsed)  But they are different networks.
+015  5.28s  (1015s elapsed)  The shortest has no junctions at all: five sides of the hexagon.
+016  5.12s  (1024s elapsed)  The other is about four percent longer, and the film keeps it anyway.
+017  7.04s  (1035s elapsed)  The film found a local minimum: nothing nearby is shorter, but it isn't the shortest.
+018  7.68s  (1046s elapsed)  How often does it find the shortest? We counted, in a simulation, not a tub of soap.
+019  6.88s  (1056s elapsed)  For three to seven pins on a regular polygon, we ran a thousand random dips each,
+020  6.08s  (1065s elapsed)  and checked each against the shortest network, found by trying every layout.
+021  5.60s  (1073s elapsed)  Three, four and five pins: a thousand out of a thousand.
+022  6.24s  (1082s elapsed)  Six pins: five hundred and six out of a thousand. A coin toss.
+023  4.48s  (1089s elapsed)  The biggest drop is from five pins to six.
+024  4.32s  (1096s elapsed)  Seven pins recover a little, to fifty-eight percent.
+025  6.24s  (1105s elapsed)  But the polygon changes shape with the pin count, so this curve belongs to this setup.
+026  7.84s  (1117s elapsed)  Can shaking help? Jiggling lets a system escape a poor valley; that's the idea of annealing.
+027  6.88s  (1128s elapsed)  One shake after settling moved six pins from fifty point six to fifty-one percent.
+028  5.44s  (1136s elapsed)  That is inside the noise. This shake did not rescue the film.
+029  3.68s  (1141s elapsed)  Here is the same story as one smooth dial.
+030  7.68s  (1152s elapsed)  Between two rings, a film makes a catenoid: a hanging chain's curve, spun around the axis.
+031  3.52s  (1159s elapsed)  Pull the rings apart, and its waist narrows.
+032  8.00s  (1171s elapsed)  Soon two flat disks would have less area, but the film keeps its waist: a local minimum again.
+033  5.92s  (1179s elapsed)  Then there is no catenoid left to keep. The film snaps.
+034  6.24s  (1189s elapsed)  The snap comes where t times the hyperbolic tangent of t equals one.
+035  6.72s  (1200s elapsed)  In the H-O-L Light theorem prover, we proved that this has exactly one positive root,
+036  3.52s  (1206s elapsed)  and pinned it down to within one ten-billionth.
+037  7.52s  (1217s elapsed)  The ring spacing at the snap, about one point three three radii, is computed, not proved.
+038  4.64s  (1226s elapsed)  The proof covers this equation. It does not cover the fluid.
+039  5.76s  (1235s elapsed)  Settling down is a way to compute. It is not a promise of the best answer.
+040  7.04s  (1246s elapsed)  As this film drains, its top turns black, just a few tens of nanometres thick.
+041  1.92s  (1250s elapsed)  And then it's gone.
+done

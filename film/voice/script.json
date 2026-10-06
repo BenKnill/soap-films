@@ -1,0 +1,271 @@
+{
+ "title": "The Soap Computer (episode 4)",
+ "duration": 300,
+ "beats": [
+  {
+   "id": "open",
+   "at": 0,
+   "lines": [
+    {
+     "show": "This soap film is thinner than a wavelength of light.",
+     "say": "This soap film is thinner than a wavelength of light.",
+     "b": "sentence"
+    },
+    {
+     "show": "Its colours are a ruler: each band is a different thickness.",
+     "say": "Its colours are a ruler: each band is a different thickness.",
+     "b": "sentence"
+    },
+    {
+     "show": "Under the pure yellow of a sodium lamp, the rainbow turns into stripes,",
+     "say": "Under the pure yellow of a sodium lamp, the rainbow turns into stripes,",
+     "b": "clause"
+    },
+    {
+     "show": "one stripe for every 221 nanometers of thickness.",
+     "say": "one stripe for every two hundred and twenty-one nanometers of thickness.",
+     "b": "paragraph"
+    },
+    {
+     "show": "A film like this pulls itself as small as it can.",
+     "say": "A film like this pulls itself as small as it can.",
+     "b": "sentence"
+    },
+    {
+     "show": "That one habit makes it a computer.",
+     "say": "That one habit makes it a computer.",
+     "b": "paragraph"
+    }
+   ]
+  },
+  {
+   "id": "computer",
+   "follow": true,
+   "pause": 2.0,
+   "lines": [
+    {
+     "show": "Put pins between two glass plates, dip them in soapy water, and lift.",
+     "say": "Put pins between two glass plates, dip them in soapy water, and lift.",
+     "b": "sentence"
+    },
+    {
+     "show": "Film walls join the pins, and tension pulls every wall as short as it can.",
+     "say": "Film walls join the pins, and tension pulls every wall as short as it can.",
+     "b": "sentence"
+    },
+    {
+     "show": "Where walls meet, three equal pulls balance only at 120 degrees.",
+     "say": "Where walls meet, three equal pulls balance only at a hundred and twenty degrees.",
+     "b": "paragraph"
+    },
+    {
+     "show": "So the film hunts for the shortest network joining every pin.",
+     "say": "So the film hunts for the shortest network joining every pin.",
+     "b": "sentence"
+    },
+    {
+     "show": "That's the Steiner tree problem, and with many pins it's hard even for computers.",
+     "say": "That's the Steiner tree problem, and with many pins it's hard even for computers.",
+     "b": "paragraph"
+    },
+    {
+     "show": "Four pins on a square: the film finds the best, 1 + √3 times the side.",
+     "say": "Four pins on a square: the film finds the best, one plus root three times the side.",
+     "b": "paragraph"
+    }
+   ]
+  },
+  {
+   "id": "twice",
+   "follow": true,
+   "pause": 1.2,
+   "lines": [
+    {
+     "show": "Now put six pins on a hexagon, and dip twice.",
+     "say": "Now put six pins on a hexagon, and dip twice.",
+     "b": "paragraph"
+    },
+    {
+     "show": "Both films settle, with every junction at 120 degrees.",
+     "say": "Both films settle, with every junction at a hundred and twenty degrees.",
+     "b": "sentence"
+    },
+    {
+     "show": "But they are different networks.",
+     "say": "But they are different networks.",
+     "b": "paragraph"
+    },
+    {
+     "show": "The shortest has no junctions at all: five sides of the hexagon.",
+     "say": "The shortest has no junctions at all: five sides of the hexagon.",
+     "b": "sentence"
+    },
+    {
+     "show": "The other is about four percent longer, and the film keeps it anyway.",
+     "say": "The other is about four percent longer, and the film keeps it anyway.",
+     "b": "paragraph"
+    },
+    {
+     "show": "The film found a local minimum: nothing nearby is shorter, but it isn't the shortest.",
+     "say": "The film found a local minimum: nothing nearby is shorter, but it isn't the shortest.",
+     "b": "paragraph"
+    }
+   ]
+  },
+  {
+   "id": "measure",
+   "follow": true,
+   "pause": 0.8,
+   "lines": [
+    {
+     "show": "How often does it find the shortest? We counted, in a simulation, not a tub of soap.",
+     "say": "How often does it find the shortest? We counted, in a simulation, not a tub of soap.",
+     "b": "sentence"
+    },
+    {
+     "show": "For three to seven pins on a regular polygon, we ran a thousand random dips each,",
+     "say": "For three to seven pins on a regular polygon, we ran a thousand random dips each,",
+     "b": "clause"
+    },
+    {
+     "show": "and checked each against the shortest network, found by trying every layout.",
+     "say": "and checked each against the shortest network, found by trying every layout.",
+     "b": "paragraph"
+    },
+    {
+     "show": "Three, four and five pins: a thousand out of a thousand.",
+     "say": "Three, four and five pins: a thousand out of a thousand.",
+     "b": "sentence"
+    },
+    {
+     "show": "Six pins: 506 out of one thousand. A coin toss.",
+     "say": "Six pins: five hundred and six out of one thousand. A coin toss.",
+     "b": "sentence"
+    },
+    {
+     "show": "The biggest drop is from five pins to six.",
+     "say": "The biggest drop is from five pins to six.",
+     "b": "paragraph"
+    },
+    {
+     "show": "Seven pins recover a little, to 58 percent.",
+     "say": "Seven pins recover a little, to fifty-eight percent.",
+     "b": "sentence"
+    },
+    {
+     "show": "But the polygon changes shape with the pin count, so this curve belongs to this setup.",
+     "say": "But the polygon changes shape with the pin count, so this curve belongs to this setup.",
+     "b": "paragraph"
+    }
+   ]
+  },
+  {
+   "id": "shake",
+   "follow": true,
+   "pause": 0.4,
+   "lines": [
+    {
+     "show": "Can shaking help? Jiggling lets a system escape a poor valley; that's the idea of annealing.",
+     "say": "Can shaking help? Jiggling lets a system escape a poor valley; that's the idea of annealing.",
+     "b": "sentence"
+    },
+    {
+     "show": "One shake after settling moved six pins from 50.6 to 51 percent.",
+     "say": "One shake after settling moved six pins from fifty point six to fifty-one percent.",
+     "b": "sentence"
+    },
+    {
+     "show": "That is inside the noise. This shake did not rescue the film.",
+     "say": "That is inside the noise. This shake did not rescue the film.",
+     "b": "paragraph"
+    }
+   ]
+  },
+  {
+   "id": "rings",
+   "follow": true,
+   "pause": 1.0,
+   "lines": [
+    {
+     "show": "Here is the same story as one smooth dial.",
+     "say": "Here is the same story as one smooth dial.",
+     "b": "sentence"
+    },
+    {
+     "show": "Between two rings, a film makes a catenoid: a hanging chain's curve, spun around the axis.",
+     "say": "Between two rings, a film makes a catenoid: a hanging chain's curve, spun around the axis.",
+     "b": "paragraph"
+    },
+    {
+     "show": "Pull the rings apart, and its waist narrows.",
+     "say": "Pull the rings apart, and its waist narrows.",
+     "b": "sentence"
+    },
+    {
+     "show": "Soon two flat discs would have less area, but the film holds on: a local minimum again.",
+     "say": "Soon two flat discs would have less area, but the film holds on: a local minimum again.",
+     "b": "paragraph"
+    },
+    {
+     "show": "Then there is no catenoid left to keep. The film snaps.",
+     "say": "Then there is no catenoid left to keep. The film snaps.",
+     "b": "paragraph"
+    }
+   ]
+  },
+  {
+   "id": "proof",
+   "follow": true,
+   "pause": 2.6,
+   "lines": [
+    {
+     "show": "The snap comes where t · tanh t = 1.",
+     "say": "The snap comes where t times the hyperbolic tangent of t equals one.",
+     "b": "sentence"
+    },
+    {
+     "show": "In the HOL Light theorem prover, we proved that this has exactly one positive root,",
+     "say": "In the H-O-L Light theorem prover, we proved that this has exactly one positive root,",
+     "b": "clause"
+    },
+    {
+     "show": "and pinned it down to within one ten-billionth.",
+     "say": "and pinned it down to within one ten-billionth.",
+     "b": "paragraph"
+    },
+    {
+     "show": "The ring spacing at the snap, about 1.33 radii, is computed, not proved.",
+     "say": "The ring spacing at the snap, about one point three three radii, is computed, not proved.",
+     "b": "sentence"
+    },
+    {
+     "show": "The proof covers this equation. It does not cover the fluid.",
+     "say": "The proof covers this equation. It does not cover the fluid.",
+     "b": "paragraph"
+    }
+   ]
+  },
+  {
+   "id": "end",
+   "follow": true,
+   "pause": 1.0,
+   "lines": [
+    {
+     "show": "Settling down is a way to compute. It is not a promise of the best answer.",
+     "say": "Settling down is a way to compute. It is not a promise of the best answer.",
+     "b": "paragraph"
+    },
+    {
+     "show": "As this film drains, its top turns black, just a few tens of nanometers thick.",
+     "say": "As this film drains, its top turns black, just a few tens of nanometers thick.",
+     "b": "sentence"
+    },
+    {
+     "show": "And then it's gone.",
+     "say": "And then it's gone.",
+     "b": "paragraph"
+    }
+   ]
+  }
+ ]
+}
