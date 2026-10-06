@@ -36,19 +36,20 @@ def load(s, j):
     return Image.open(os.path.join(a.media, "frames", s["id"], f"f{f:05d}.png")).convert("RGB"), f
 
 
-def fade(c, k): return tuple(int(round(v * max(0.0, min(1.0, k)))) for v in c)
+def fade(c, k): return (*c, int(round(255 * max(0.0, min(1.0, k)))))      # RGBA: drawn on a transparent layer
 
 
 def text(d, xy, s, col, k, w="R", z=28, anchor="l", shadow=True):
     if k <= 0: return
     if shadow:
-        F(w, z).draw(d, (xy[0] + 2, xy[1] + 2), s, fade((0, 0, 0), k), anchor)
+        F(w, z).draw(d, (xy[0] + 2, xy[1] + 2), s, fade((0, 0, 0), 0.75 * k), anchor)
     F(w, z).draw(d, xy, s, fade(col, k), anchor)
 
 
 def overlay(s, im, t, f):
     """labels for shot s at shot time t (its frame number f)"""
-    d = ImageDraw.Draw(im); c = s["cues"]; m = meta.get(s["id"], {}).get(str(f))
+    layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer); c = s["cues"]; m = meta.get(s["id"], {}).get(str(f))
     out = s["end"] - s["start"]
     if s["id"] == "open":
         k_na = ramp(t, c["na_in"], 0.8) * (1 - ramp(t, c["na_out"], 0.8))
@@ -92,6 +93,8 @@ def overlay(s, im, t, f):
             ks = ramp(t, c["snap"], 0.5)
             text(d, (90, 160), "past h/R ≈ 1.3255 there is no catenoid (computed)", GOLD, ks, "M", 30)
         text(d, (90, 1010), "exact catenoids, then a simulated collapse (curvature flow) · rendered in Blender", MUTED, k, z=24, shadow=False)
+    if layer.getbbox() is None: return im
+    return Image.alpha_composite(im.convert("RGBA"), layer).convert("RGB")
 
 
 def frame(k):
@@ -108,7 +111,7 @@ def frame(k):
                 jn = f - na["first"]
                 if 0 <= jn < na["frames"]:
                     imn, _ = load(na, jn); im = Image.blend(im, imn, kn)
-        overlay(s, im, ts, f)
+        im = overlay(s, im, ts, f)
         layers.append((s, im))
     im = layers[0][1]
     for s, nxt in layers[1:]:
