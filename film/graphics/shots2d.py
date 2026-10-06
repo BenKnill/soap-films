@@ -136,15 +136,15 @@ def proof(t, cue):
     if kp > 0:
         badge(d, rx, 300, "PROVED in HOL Light", mix(GOLD, BG, kp), 24)
         face("R", 26).draw(d, (rx, 360), "exactly one positive root, and it lies in", mix(INK2, BG, kp))
-    kd = ramp(t, cue.get("pin", FAR), 0.4)
+    kd = min(1.0, max(0.0, (t - cue.get("pin", FAR)) / 2.4))   # digits lock in one by one
     if kd > 0:
         lo, hi = "1.1996786402", "1.1996786403"
-        nd = 3 + int(round(kd * (len(lo) - 3)))     # digits revealed
+        nd = 3 + int(kd * (len(lo) - 3) + 0.999)     # digits revealed
         fm = face("MONO", 54)
         sl = lo[:nd] + "·" * (len(lo) - nd); sh = hi[:nd] + "·" * (len(hi) - nd)
         fm.draw(d, (rx, 450), sl, mix(INK, BG, kp)); face("R", 34).draw(d, (rx + fm.length(lo) + 18, 450), "< t <", mix(INK2, BG, kp))
         fm.draw(d, (rx, 520), sh, mix(INK, BG, kp))
-        kw = ramp(t, cue.get("pin", FAR) + 1.2, 0.5)
+        kw = ramp(t, cue.get("pin", FAR) + 2.6, 0.5)
         face("R", 24).draw(d, (rx, 572), "an interval one ten-billionth wide", mix(INK2, BG, kw))
         face("R", 20).draw(d, (rx, 610), "proofs/catenoid_snap.ml · 0 new axioms", mix(MUTED, BG, kw))
     kh = ramp(t, cue.get("computed", FAR), 0.6)

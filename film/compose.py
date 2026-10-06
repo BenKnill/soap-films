@@ -57,6 +57,8 @@ def overlay(s, im, t, f):
         text(d, (80, 1010), "sodium light: one wavelength, 589 nm", INK2, k_na, z=26)
         text(d, (80, 966), "one stripe per 221 nm of thickness", INK, k_na * ramp(t, c["stripe"], 0.6), "M", 30)
         kt = ramp(t, c["title"], 1.2)
+        if kt > 0:
+            d.rounded_rectangle([420, 440, 1500, 610], radius=24, fill=(0, 0, 0, int(150 * kt)))
         text(d, (960, 560), "The Soap Computer", INK, kt, "L", 104, "c")
     elif s["id"] == "computer" and m:
         r = m["rigs"][0]
@@ -88,7 +90,7 @@ def overlay(s, im, t, f):
             text(d, (90, 160), f"film area ÷ two flat discs = {m['area_ratio']:.3f}", INK2, k, "R", 30)
         ke = ramp(t, c["equal"], 0.6) * (1.0 if hr >= 1.0554 else 0.0)
         if m["phase"] == "catenoid":
-            text(d, (90, 214), "two flat discs now have less area: the film keeps a local minimum", GOLD, ke, "M", 30)
+            text(d, (960, 950), "two flat discs now have less area: the film keeps a local minimum", GOLD, ke, "M", 32, "c")
         if m["phase"] != "catenoid":
             ks = ramp(t, c["snap"], 0.5)
             text(d, (90, 160), "past h/R ≈ 1.3255 there is no catenoid (computed)", GOLD, ks, "M", 30)
