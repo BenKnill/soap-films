@@ -39,8 +39,11 @@ def load(s, j):
 def fade(c, k): return (*c, int(round(255 * max(0.0, min(1.0, k)))))      # RGBA: drawn on a transparent layer
 
 
-def text(d, xy, s, col, k, w="R", z=28, anchor="l", shadow=True):
+def text(d, xy, s, col, k, w="R", z=28, anchor="l", shadow=True, box=False):
     if k <= 0: return
+    if box:                                   # a dark translucent plate under labels that sit over the films
+        wd = F(w, z).length(s); x0 = xy[0] - (wd / 2 if anchor == "c" else wd if anchor == "r" else 0)
+        d.rounded_rectangle([x0 - 16, xy[1] - z - 8, x0 + wd + 16, xy[1] + z * 0.4 + 6], radius=10, fill=(0, 0, 0, int(165 * k)))
     if shadow:
         F(w, z).draw(d, (xy[0] + 2, xy[1] + 2), s, fade((0, 0, 0), 0.75 * k), anchor)
     F(w, z).draw(d, xy, s, fade(col, k), anchor)
@@ -65,23 +68,23 @@ def overlay(s, im, t, f):
         text(d, (80, 70), "simulated film (four-pin dip #3 of 1,000) · rendered in Blender", MUTED, ramp(t, c["tag"], 0.8), z=24, shadow=False)
         if r and r["arcs"] > 0:
             for x, y in r["jx"]:
-                text(d, (x + 58, y - 34), "120°", GOLD, r["arcs"], "M", 34, "l")
+                text(d, (x + 58, y - 34), "120°", GOLD, r["arcs"], "M", 34, "l", box=True)
         if r:
             ka = ramp(t, c["answer"], 0.8)
-            text(d, (960, 990), f"length {r['L'] / math.sqrt(2):.3f} × side  =  (1 + √3) × side, the shortest possible", INK, ka, "M", 34, "c")
+            text(d, (960, 990), f"length {r['L'] / math.sqrt(2):.3f} × side  =  (1 + √3) × side, the shortest possible", INK, ka, "M", 34, "c", box=True)
     elif s["id"] == "twice" and m:
         text(d, (80, 70), "simulated films: six-pin dips #1 and #3 of the 1,000 measured · hexagon side 1", MUTED, ramp(t, c["tag"], 0.8), z=24, shadow=False)
         for i, (r, cue, col, note) in enumerate(zip(m["rigs"], ("longer", "shortest"), (INK, GOLD), ("", "the shortest"))):
             if not r: continue
-            x = r["centre"][0]; y = max(p[1] for p in r["pins"]) + 70
+            x = r["centre"][0]; y = max(p[1] for p in r["pins"]) + 120
             k = ramp(t, c[cue], 0.7)
             lab = f"length {r['L']:.3f}" + (f"  ·  {100 * (r['L'] / 5 - 1):.1f}% longer" if i == 0 else "  ·  the shortest")
-            text(d, (x, y), lab, col, k, "M", 32, "c")
+            text(d, (x, y), lab, col, k, "M", 32, "c", box=True)
         r0 = m["rigs"][0]
         if r0:
             k = ramp(t, c["local"], 0.7)
             x = r0["centre"][0]; y = min(p[1] for p in r0["pins"]) - 40
-            text(d, (x, y), "a local minimum", GOLD, k, "M", 34, "c")
+            text(d, (x, y), "a local minimum", GOLD, k, "M", 34, "c", box=True)
     elif s["id"] == "rings" and m:
         k = ramp(t, c["readout"], 0.8)
         hr = m["hr"]
@@ -90,7 +93,7 @@ def overlay(s, im, t, f):
             text(d, (90, 160), f"film area ÷ two flat discs = {m['area_ratio']:.3f}", INK2, k, "R", 30)
         ke = ramp(t, c["equal"], 0.6) * (1.0 if hr >= 1.0554 else 0.0)
         if m["phase"] == "catenoid":
-            text(d, (960, 950), "two flat discs now have less area: the film keeps a local minimum", GOLD, ke, "M", 32, "c")
+            text(d, (960, 950), "two flat discs now have less area: the film keeps a local minimum", GOLD, ke, "M", 32, "c", box=True)
         if m["phase"] != "catenoid":
             ks = ramp(t, c["snap"], 0.5)
             text(d, (90, 160), "past h/R ≈ 1.3255 there is no catenoid (computed)", GOLD, ks, "M", 30)
